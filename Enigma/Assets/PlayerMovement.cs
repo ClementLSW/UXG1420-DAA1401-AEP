@@ -40,6 +40,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private bool isGrounded(){
-        return true;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        Debug.Log(hit.collider.tag);
+
+        if(hit.collider!=null && hit.collider.tag == "Ground"){
+            float distance = Mathf.Abs(hit.point.y - transform.position.y);
+            Debug.Log(distance);
+            if(distance < 0.6f){
+                return true;
+            }
+        }
+
+        return false;
+        
     }
 }
