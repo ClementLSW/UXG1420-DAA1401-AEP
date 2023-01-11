@@ -58,3 +58,17 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+*.meta
+*.log
+*.bin
+Enigma/Temp/UnityLockfile
+Enigma/Temp/workerlic
+*.dwlt
+Enigma/Packages/manifest.json
+Enigma/Library/*
+Enigma/UserSettings/EditorUserSettings.asset
+Enigma/Temp/FSTimeGet-7cad6dbe0622a3d4f9079a4d3e65fcdf
+Enigma/Temp/FSTimeGet-2e3af4ba5ace990428158140392301f5
+Enigma/Temp/FSTimeGet-20f652a66532de543b827921fc87c39c
+Enigma/Temp/__Backupscenes/0.backup
+Enigma/Packages/packages-lock.json
