@@ -61,6 +61,7 @@ crashlytics-build.properties
 *.meta
 *.log
 *.bin
+Enigma/Temp/*
 Enigma/Temp/UnityLockfile
 Enigma/Temp/workerlic
 *.dwlt
