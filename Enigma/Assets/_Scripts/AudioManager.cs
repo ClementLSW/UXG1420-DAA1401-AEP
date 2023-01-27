@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-/// <summary>
-/// This script creates an AudioManager object that can play sound effects and music.
-/// </summary>
-
 public class AudioManager : MonoBehaviour
 {
-    /// <summary>
-    /// Static instance of the AudioManager to ensure only one instance exists in the scene
-    /// </summary>
+
+    // Static instance of the AudioManager to ensure only one instance exists in the scene
     public static AudioManager instance;
 
     public AudioSource musicSource;
@@ -32,11 +27,6 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    /// <summary>
-    /// Play a single sound effect
-    /// </summary>
-    /// <param name="clip">The AudioClip to play</param>
-
     public void PlaySfx(AudioClip clip)
     {
         sfxSource.clip = clip;
@@ -49,22 +39,18 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    /// <summary>
-    /// Set the volume of the master mixer group
-    /// </summary>
-    /// <param name="volume">The volume level to set (between 0 and 1)</param>
-    public void SetMasterVolume(float volume)
-    {
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
-    }
+    // public void SetMasterVolume(float volume)
+    // {
+    //     audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+    // }
 
     public void SetBGMVolume(float volume)
     {
-        audioMixer.SetFloat("BGM", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
     }
 }
