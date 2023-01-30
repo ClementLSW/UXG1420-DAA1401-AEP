@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         var horizontalInput = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")){
             Jump();
+            TestingAudioManager.Instance.PlaySFX("Jump");
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
