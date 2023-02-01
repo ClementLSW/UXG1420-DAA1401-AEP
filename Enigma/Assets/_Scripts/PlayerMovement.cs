@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Vector2 velocity = new Vector2(1.0f, 1.0f);
+
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         var horizontalInput = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")){
             Jump();
-            TestingAudioManager.Instance.PlaySFX("Jump");
+            //TestingAudioManager.Instance.PlaySFX("Jump");
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
@@ -55,6 +56,4 @@ public class PlayerMovement : MonoBehaviour
         return false;
         
     }
-
-    // Gerald was here!!!
 }
