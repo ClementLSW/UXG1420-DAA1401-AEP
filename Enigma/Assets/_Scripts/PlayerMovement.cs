@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,15 +11,20 @@ public class PlayerMovement : MonoBehaviour
     private float playerSpeed = 2.0f;
     private float jumpVelocity = 15.0f;
 
+    [SerializeField]
+    private AudioManager am;
+
+    [SerializeField]
+    private AudioClip jumpClip;
+
     void Awake(){
-       rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Vector2 velocity = new Vector2(1.0f, 1.0f);
-
     }
 
     // Update is called once per frame
@@ -27,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         var horizontalInput = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")){
             Jump();
-            //TestingAudioManager.Instance.PlaySFX("Jump");
+            
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
@@ -37,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded()){
             Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
+            am.PlaySfx(jumpClip);
             //Jump
         }
     }
@@ -56,4 +63,6 @@ public class PlayerMovement : MonoBehaviour
         return false;
         
     }
+
+    // Gerald was here!!!
 }
