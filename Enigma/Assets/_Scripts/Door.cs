@@ -8,13 +8,16 @@ public class Door : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
     }
 
     [ContextMenu(itemName: "Open")]
     public void Open()
     {
-        _animator.SetTrigger(name:"Open");
+        //_animator.SetTrigger(name:"Open");
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
     // Start is called before the first frame update
+
+
 }
