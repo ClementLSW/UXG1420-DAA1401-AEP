@@ -7,27 +7,61 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Transform grabPos;
 
-    [SerializeField]
-    private Transform rayPos;
+    private BoxCollider2D bc;
+    private GameObject selectedObj;
+    private GameObject heldItem;
+    private GameObject target;
+    private bool isHoldingItem;
 
-    private GameObject grabbedObject;
-    private int rayDist;
-    private int layerIndex;
-    // Start is called before the first frame update
-    void Start()
-    {
-        layerIndex = LayerMask.NameToLayer("Objects");
+    void Awake() {
+        isHoldingItem = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //RaycastHit2D hitInfo = Physics2D.Raycast(rayPos, Vector2.right, rayDist);
+    void Update() {
+         if (!isHoldingItem){
+             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+                heldItem = selectedObj;
+                heldItem.transform.position = grabPos.position;
+                heldItem.transform.SetParent(grabPos);
+                isHoldingItem = true;
+             }
+        }else {                                                     // Held item
+            if (Input.GetKeyDown(KeyCode.E) && target){
+                Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
+                target.GetComponent<PressurePlate>().TrySink(heldItem);
+                heldItem.transform.position = targetPos.position;
+                heldItem.transform.SetParent(null);
+                heldItem = null;
+                isHoldingItem = false;
+            }         
+        }
+    }
 
-        if (Input.GetButtonDown("E") && !grabbedObject) {
-            //Pickup Stuff
-        }else if (Input.GetButtonDown("E")) {
-            //Put Down Stuff
+    // Once the proximity collider is triggered, the closest valid game object is selected
+    void OnTriggerEnter2D(Collider2D col) {
+        switch (col.gameObject.layer) {
+            case 3:
+                selectedObj = col.gameObject;
+                break;
+            case 6:
+                target = col.gameObject;
+                break;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col) {
+        
+        switch (col.gameObject.layer) {
+            case 3:
+                if (selectedObj = col.gameObject) {
+                    selectedObj = null;
+                }
+                break;
+            case 6:
+                if (target = col.gameObject) {
+                    target = null;
+                }
+                break;
         }
     }
 }

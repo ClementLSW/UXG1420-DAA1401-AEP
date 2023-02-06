@@ -8,7 +8,7 @@ public class PressurePlate : MonoBehaviour
 
     public float sinkDepth;
     private Vector3 sinkVector, sinkDest;
-    private bool sink;
+    public bool sink;
 
     void Start(){
         sinkDepth = transform.localScale.y;
@@ -18,18 +18,30 @@ public class PressurePlate : MonoBehaviour
         sink = false;
     }
 
-    void OnTriggerEnter2D(Collider2D col){
-        if(col.tag == "weight"){
+    //void OnTriggerEnter2D(Collider2D col){
+    //    if(col.tag == "weight"){
+    //        Debug.Log("Activated");
+    //        cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+    //        GetComponent<BoxCollider2D>().enabled = false;
+    //        sink = true;
+
+    //        // Do Stuff Here
+    //    }
+    //}
+
+    public void TrySink(GameObject gameObject) {
+        Debug.Log("TrySink");
+        if(gameObject.tag == "weight") {
             Debug.Log("Activated");
             cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
             GetComponent<BoxCollider2D>().enabled = false;
             sink = true;
-
-            // Do Stuff Here
         }
     }
 
     void Update(){
+
+
         if (sink){
             if(transform.position.y <= sinkDest.y){
                 Debug.Log("Destroy");
