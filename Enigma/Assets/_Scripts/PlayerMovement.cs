@@ -6,19 +6,15 @@ using static AudioManager;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Player player;
 
     [SerializeField]
     private float playerSpeed = 2.0f;
     private float jumpVelocity = 15.0f;
 
-    [SerializeField]
-    private AudioManager am;
-
-    [SerializeField]
-    private AudioClip jumpClip;
-
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
     // Start is called before the first frame update
@@ -32,8 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var horizontalInput = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")){
-            Jump();
-            
+            Jump(); 
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
@@ -43,14 +38,13 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded()){
             Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
-            am.PlaySfx(jumpClip);
-            //Jump
+            player.PlayJump();
         }
     }
 
     private bool isGrounded(){
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
-        Debug.Log(hit.collider.tag);
+        // Debug.Log(hit.collider.tag);
 
         if(hit.collider!=null && hit.collider.tag == "Ground"){
             float distance = Mathf.Abs(hit.point.y - transform.position.y);

@@ -25,20 +25,9 @@ public class PressurePlate : MonoBehaviour
         sink = false;
     }
 
-    //void OnTriggerEnter2D(Collider2D col){
-    //    if(col.tag == "weight"){
-    //        Debug.Log("Activated");
-    //        cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
-    //        GetComponent<BoxCollider2D>().enabled = false;
-    //        sink = true;
-
-    //        // Do Stuff Here
-    //    }
-    //}
-
     public void TrySink(GameObject gameObject) {
         Debug.Log("TrySink");
-        if(gameObject.tag == "weight") {
+        if(gameObject.tag == "weight" && gameObject.GetComponent<Vase>().type == 0) {
             Debug.Log("Activated");
             // Raise Door
             door.GetComponent<Door>().Open();
@@ -46,11 +35,15 @@ public class PressurePlate : MonoBehaviour
             cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
             GetComponent<BoxCollider2D>().enabled = false;
             sink = true;
+            gameObject.layer = 0;
+            gameObject.transform.SetParent(this.transform);
+            item = gameObject;
+        }
+        else {
+            gameObject.transform.position = attachPos.position
         }
 
-        gameObject.layer = 0;
-        gameObject.transform.SetParent(this.transform);
-        item = gameObject;
+        
     }
 
     void Update(){
@@ -58,13 +51,13 @@ public class PressurePlate : MonoBehaviour
 
         if (sink){
             if(transform.position.y <= sinkDest.y){
-                Debug.Log("Destroy");
+                //Debug.Log("Destroy");
                 item.GetComponent<BoxCollider2D>().enabled = false;
                 item.transform.SetParent(null);
                 Destroy(this.gameObject);
             }
             else {
-                Debug.Log("Move");
+                //Debug.Log("Move");
                 transform.position = Vector3.MoveTowards(transform.position, sinkDest, 0.5f * Time.deltaTime);
                 item.transform.position = attachPos.position;
             }

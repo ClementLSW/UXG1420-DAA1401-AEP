@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+
+    void Start() {
+        if (!target) {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+    }
+
     [SerializeField]
     public Transform target;
 
