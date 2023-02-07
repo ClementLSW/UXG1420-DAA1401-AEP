@@ -1232,7 +1232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 966602876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attachPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1413,7 +1413,8 @@ GameObject:
   - component: {fileID: 1063005799}
   - component: {fileID: 1063005798}
   - component: {fileID: 1063005797}
-  m_Layer: 0
+  - component: {fileID: 1063005800}
+  m_Layer: 6
   m_Name: Shelf (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1514,6 +1515,19 @@ Transform:
   m_Father: {fileID: 354749386}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063005800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063005796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a98fe9e72ad78c418e740925d57a239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPos: {fileID: 966602876}
 --- !u!1 &1115717599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1722536481}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attachPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2249,7 +2263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1746144792}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: attachPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2687,7 +2701,8 @@ GameObject:
   - component: {fileID: 2123484445}
   - component: {fileID: 2123484444}
   - component: {fileID: 2123484443}
-  m_Layer: 0
+  - component: {fileID: 2123484446}
+  m_Layer: 6
   m_Name: Shelf (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2788,6 +2803,19 @@ Transform:
   m_Father: {fileID: 354749386}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123484446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123484442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a98fe9e72ad78c418e740925d57a239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPos: {fileID: 1746144792}
 --- !u!4 &176923434162399259
 Transform:
   m_ObjectHideFlags: 0
@@ -3280,7 +3308,8 @@ GameObject:
   - component: {fileID: 2018317733567800371}
   - component: {fileID: 6737255221423147818}
   - component: {fileID: 8679732270627170878}
-  m_Layer: 0
+  - component: {fileID: 8679732270627170879}
+  m_Layer: 6
   m_Name: Shelf
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3386,3 +3415,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 27.971226, y: 6.99}
   m_EdgeRadius: 0
+--- !u!114 &8679732270627170879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410966645100410672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a98fe9e72ad78c418e740925d57a239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPos: {fileID: 1722536481}

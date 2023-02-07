@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,9 +29,15 @@ public class Grab : MonoBehaviour
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
                 Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
-                target.GetComponent<PressurePlate>().TrySink(heldItem);
-                heldItem.transform.position = targetPos.position;
-                heldItem.transform.SetParent(null);
+                if (target.GetComponent<PressurePlate>()) {
+                    target.GetComponent<PressurePlate>().TrySink(heldItem);
+                } else if (target.GetComponent<Shelf>()) {
+                    Transform ap = target.GetComponent<Shelf>().attachPos;
+                     heldItem.transform.position = ap.position;
+                    heldItem.transform.SetParent(ap);
+                }
+                //heldItem.transform.position = targetPos.position;
+                //heldItem.transform.SetParent(targetPos);
                 heldItem = null;
                 isHoldingItem = false;
             }         

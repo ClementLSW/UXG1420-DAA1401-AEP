@@ -40,7 +40,7 @@ public class PressurePlate : MonoBehaviour
             item = gameObject;
         }
         else {
-            gameObject.transform.position = attachPos.position
+            gameObject.transform.position = attachPos.position;
         }
 
         
