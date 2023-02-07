@@ -39,6 +39,12 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StopBGM(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.Stop();
+    }
+
     // public void SetMasterVolume(float volume)
     // {
     //     audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
