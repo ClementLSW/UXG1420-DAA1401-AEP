@@ -6,4 +6,6 @@ public class Shelf : MonoBehaviour
 {
     [SerializeField]
     public Transform attachPos;
+    [SerializeField]
+    public bool occupied;
 }

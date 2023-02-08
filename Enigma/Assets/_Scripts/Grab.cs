@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// I am super depressed;
+
 public class Grab : MonoBehaviour
 {
     [SerializeField]
@@ -31,13 +33,11 @@ public class Grab : MonoBehaviour
                 Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
                 if (target.GetComponent<PressurePlate>()) {
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
-                } else if (target.GetComponent<Shelf>()) {
+                } else if (target.GetComponent<Shelf>() && !target.GetComponent<Shelf>().occupied) {
                     Transform ap = target.GetComponent<Shelf>().attachPos;
-                     heldItem.transform.position = ap.position;
+                    heldItem.transform.position = ap.position;
                     heldItem.transform.SetParent(ap);
                 }
-                //heldItem.transform.position = targetPos.position;
-                //heldItem.transform.SetParent(targetPos);
                 heldItem = null;
                 isHoldingItem = false;
             }         
@@ -51,6 +51,7 @@ public class Grab : MonoBehaviour
                 selectedObj = col.gameObject;
                 break;
             case 6:
+                Debug.Log("Targetfound");
                 target = col.gameObject;
                 break;
         }

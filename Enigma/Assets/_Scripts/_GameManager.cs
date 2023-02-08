@@ -48,6 +48,9 @@ public class _GameManager : MonoBehaviour
             case 5:
                 SceneManager.LoadScene("Secret");
                 break;
+            case 6:
+                SceneManager.LoadScene("End");
+                break;
         }
     }
 
@@ -62,7 +65,7 @@ public class _GameManager : MonoBehaviour
         }
     }
 
-    void Death(int deathType) {
+    public void Death(int deathType) {
         switch (deathType) {
             case 0:
                 // Spikey death

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class PressurePlate : MonoBehaviour, IActivatable
 {
     public Camera cam;
 
@@ -17,6 +17,13 @@ public class PressurePlate : MonoBehaviour
     [SerializeField]
     private GameObject door;
 
+    [SerializeField]
+    private GameObject fall;
+
+    public enum plateType { RED, BLUE, YELLOW };
+    [SerializeField]
+    public plateType type;
+
     void Start(){
         sinkDepth = transform.localScale.y;
         sinkVector = new Vector3(0, sinkDepth, 0);
@@ -25,29 +32,50 @@ public class PressurePlate : MonoBehaviour
         sink = false;
     }
 
+    public void Activate() {
+
+    }
+
     public void TrySink(GameObject gameObject) {
         Debug.Log("TrySink");
-        if(gameObject.tag == "weight" && gameObject.GetComponent<Vase>().type == 0) {
-            Debug.Log("Activated");
-            // Raise Door
-            door.GetComponent<Door>().Open();
 
-            cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
-            GetComponent<BoxCollider2D>().enabled = false;
-            sink = true;
-            gameObject.layer = 0;
-            gameObject.transform.SetParent(this.transform);
-            item = gameObject;
-        }
-        else {
-            gameObject.transform.position = attachPos.position;
+        switch (type) {
+            case plateType.RED:
+                if(gameObject.GetComponent<Vase>().type == Vase.vaseType.RED) {
+                    if (door){
+                        door.GetComponent<Door>().Open();
+                        cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+                        GetComponent<BoxCollider2D>().enabled = false;
+                        sink = true;
+                        gameObject.layer = 0;
+                        gameObject.transform.SetParent(this.transform);
+                        item = gameObject;
+                        return;
+                    }
+                }
+                break;
+            case plateType.BLUE:
+                if(gameObject.GetComponent<Vase>().type == Vase.vaseType.BLUE) {
+                    if (fall) {
+                        fall.AddComponent(typeof(Rigidbody2D));
+                        cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+                        GetComponent<BoxCollider2D>().enabled = false;
+                        sink = true;
+                        gameObject.layer = 0;
+                        gameObject.transform.SetParent(this.transform);
+                        item = gameObject;
+                        return;
+                    }
+                }
+                break;
+            case plateType.YELLOW:
+                break;
         }
 
-        
+        gameObject.transform.position = attachPos.position;
     }
 
     void Update(){
-
 
         if (sink){
             if(transform.position.y <= sinkDest.y){
