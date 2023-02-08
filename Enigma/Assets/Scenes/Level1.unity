@@ -5010,4 +5010,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachPos: {fileID: 1722536481}
+<<<<<<< HEAD
   occupied: 0
+=======
+--- !u!1001 &9152023237018281692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999957
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.002952702
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920396974302947508, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865428593287098318, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+      propertyPath: m_Name
+      value: Pressure Plate (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
+>>>>>>> e1e69b2d7f727fc44b86966b671a90f1d4a5fe33
