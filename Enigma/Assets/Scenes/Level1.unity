@@ -5010,9 +5010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachPos: {fileID: 1722536481}
-<<<<<<< HEAD
-  occupied: 0
-=======
 --- !u!1001 &9152023237018281692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5070,4 +5067,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b78a3fe5ef68b149b8db9fddef63780, type: 3}
->>>>>>> e1e69b2d7f727fc44b86966b671a90f1d4a5fe33
