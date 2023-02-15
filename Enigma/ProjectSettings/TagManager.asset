@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 1257293187
+    locked: 0
   - name: Objects
     uniqueID: 3618676633
     locked: 0
