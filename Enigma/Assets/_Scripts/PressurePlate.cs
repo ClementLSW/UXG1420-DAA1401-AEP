@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour, IActivatable
 {
-    public Camera cam;
+    private Camera cam;
 
     public float sinkDepth;
     private Vector3 sinkVector, sinkDest;
@@ -25,11 +25,13 @@ public class PressurePlate : MonoBehaviour, IActivatable
     public plateType type;
 
     void Start(){
-        sinkDepth = transform.localScale.y;
+        sinkDepth = GetComponent<SpriteRenderer>().bounds.size.y;
         sinkVector = new Vector3(0, sinkDepth, 0);
         sinkDest = transform.position - sinkVector;
         Debug.Log(sinkDest);
         sink = false;
+
+        cam = Camera.main;
     }
 
     public void Activate() {
