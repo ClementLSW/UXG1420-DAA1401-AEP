@@ -10,11 +10,11 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Transform grabPos;
 
-    private BoxCollider2D bc;
+    //private BoxCollider2D bc;
     private GameObject selectedObj;
-    private GameObject heldItem;
+    [SerializeField] private GameObject heldItem;
     private GameObject target;
-    private bool isHoldingItem;
+    [SerializeField] private bool isHoldingItem;
 
     void Awake() {
         isHoldingItem = false;
@@ -25,21 +25,30 @@ public class Grab : MonoBehaviour
              if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 heldItem = selectedObj;
                 heldItem.transform.position = grabPos.position;
+                heldItem.GetComponentInParent<IAnchor>().occupied = false;
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
              }
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
-                Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
+                //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
                 if (target.GetComponent<PressurePlate>()) {
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
-                } else if (target.GetComponent<Shelf>() && !target.GetComponent<Shelf>().occupied) {
-                    Transform ap = target.GetComponent<Shelf>().attachPos;
+                    heldItem = null;
+                    isHoldingItem = false;
+                } else if (target.GetComponent<IAnchor>() != null && !target.GetComponent<IAnchor>().occupied) {
+                    IAnchor ins = target.GetComponent<IAnchor>();
+                    Transform ap = ins.attachPos;
                     heldItem.transform.position = ap.position;
                     heldItem.transform.SetParent(ap);
+                    ins.occupied = true;
+                    heldItem = null;
+                    isHoldingItem = false;
+                    //Transform ap = target.GetComponent<Shelf>().attachPos;
+                    //heldItem.transform.position = ap.position;
+                    //heldItem.transform.SetParent(ap);
                 }
-                heldItem = null;
-                isHoldingItem = false;
+                
             }         
         }
     }

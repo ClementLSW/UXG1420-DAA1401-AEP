@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shelf : MonoBehaviour, IAnchor
+public class TorchHolder : MonoBehaviour, IAnchor
 {
     [SerializeField] public Transform attachPos;
     [SerializeField] public bool occupied;

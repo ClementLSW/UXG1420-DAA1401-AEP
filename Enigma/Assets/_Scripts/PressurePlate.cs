@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour, IActivatable
+public class PressurePlate : MonoBehaviour, IAnchor
 {
     private Camera cam;
 
@@ -10,19 +10,16 @@ public class PressurePlate : MonoBehaviour, IActivatable
     private Vector3 sinkVector, sinkDest;
     public bool sink;
     private GameObject item;
+    private bool occupied;
 
-    [SerializeField]
-    private Transform attachPos;
-
-    [SerializeField]
-    private GameObject door;
-
-    [SerializeField]
-    private GameObject fall;
-
+    [SerializeField] private Transform attachPos;
+    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject fall;
     public enum plateType { RED, BLUE, YELLOW };
-    [SerializeField]
-    public plateType type;
+    [SerializeField] public plateType type;
+
+    Transform IAnchor.attachPos => attachPos;
+    bool IAnchor.occupied { get => occupied; set => occupied = value; }
 
     void Start(){
         sinkDepth = GetComponent<SpriteRenderer>().bounds.size.y;
