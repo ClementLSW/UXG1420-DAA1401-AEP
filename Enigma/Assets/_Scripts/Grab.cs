@@ -72,4 +72,10 @@ public class Grab : MonoBehaviour
                 break;
         }
     }
+
+    public void DestroyHeldItem() {
+        // Make sure objects cannot be carried from one scene to the other
+        Destroy(heldItem);
+        isHoldingItem = false;
+    }
 }

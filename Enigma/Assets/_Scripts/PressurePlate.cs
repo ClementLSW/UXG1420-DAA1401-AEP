@@ -75,6 +75,7 @@ public class PressurePlate : MonoBehaviour, IActivatable
         }
 
         gameObject.transform.position = attachPos.position;
+        gameObject.transform.SetParent(this.transform);
     }
 
     void Update(){

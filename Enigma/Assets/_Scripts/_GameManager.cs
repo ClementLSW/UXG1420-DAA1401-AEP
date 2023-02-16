@@ -7,7 +7,7 @@ public class _GameManager : MonoBehaviour
 {
     public static _GameManager instance;
     public GameObject player;
-    public Transform level1Spawn;
+    public Transform level1Spawn, alphaSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,12 @@ public class _GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void LoadAlpha() {
+        SceneManager.LoadScene("Alpha");
+    }
+
     public void SwitchState(int state) {
+        player.GetComponent<Grab>().DestroyHeldItem();
         switch (state) {
             case 0:
                 SceneManager.LoadScene("MainMenu");
@@ -62,6 +67,10 @@ public class _GameManager : MonoBehaviour
         }else if(scene.name == "Level1") {
             level1Spawn = GameObject.FindWithTag("Respawn").transform;
             player.transform.position = level1Spawn.transform.position;
+        }else if (scene.name == "Alpha") {
+            player = GameObject.FindWithTag("Player");
+            alphaSpawn = GameObject.FindWithTag("Respawn").transform;
+            player.transform.position = alphaSpawn.position;
         }
     }
 
