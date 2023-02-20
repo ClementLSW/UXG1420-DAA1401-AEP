@@ -24,8 +24,12 @@ public class Grab : MonoBehaviour
          if (!isHoldingItem){
              if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 heldItem = selectedObj;
+                Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;
-                //heldItem.GetComponentInParent<IAnchor>().occupied = false;
+                if (heldItem.GetComponentInParent<IAnchor>() != null) {
+                    heldItem.GetComponentInParent<IAnchor>().occupied = false;
+                }
+                
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
              }
@@ -48,8 +52,14 @@ public class Grab : MonoBehaviour
                     //heldItem.transform.position = ap.position;
                     //heldItem.transform.SetParent(ap);
                 }
-                
-            }         
+            }
+            else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
+                heldItem.AddComponent<Rigidbody2D>();
+                heldItem.AddComponent<BoxCollider2D>();
+                heldItem.transform.SetParent(null);
+                heldItem = null;
+                isHoldingItem = false;
+            }      
         }
 
          if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {

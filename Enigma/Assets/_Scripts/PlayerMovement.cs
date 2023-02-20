@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private float playerSpeed = 2.0f;
-    private float jumpVelocity = 15.0f;
+    private float jumpVelocity = 18.0f;
 
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         var horizontalInput = Input.GetAxis("Horizontal");
         if(Input.GetButtonDown("Jump")){
+            Debug.Log("Jump");
             Jump(); 
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
@@ -49,13 +50,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private bool isGrounded(){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
-        // Debug.Log(hit.collider.tag);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up * 4.5f);
+        Debug.Log(hit.collider.tag);
 
         if(hit.collider!=null && hit.collider.tag == "Ground"){
             float distance = Mathf.Abs(hit.point.y - transform.position.y);
             Debug.Log(distance);
-            if(distance < 0.6f){
+            if(distance < 1.5f){
                 return true;
             }
         }

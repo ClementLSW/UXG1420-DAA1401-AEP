@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     private AudioClip jumpClip; 
 
     void Awake() {
+        audioManager = AudioManager.instance;
         if (player == null) {
             player = this;
         }
