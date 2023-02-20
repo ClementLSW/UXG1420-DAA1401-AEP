@@ -13,7 +13,6 @@ public class PressurePlate : MonoBehaviour, IAnchor
     private GameObject item;
     private bool occupied;
 
-    [SerializeField]
     private AudioManager audioManager;
 
     [SerializeField]
@@ -29,6 +28,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
     bool IAnchor.occupied { get => occupied; set => occupied = value; }
 
     void Start(){
+        audioManager = AudioManager.instance;
         sinkDepth = GetComponent<SpriteRenderer>().bounds.size.y;
         sinkVector = new Vector3(0, sinkDepth, 0);
         sinkDest = transform.position - sinkVector;

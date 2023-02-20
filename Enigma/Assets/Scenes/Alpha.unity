@@ -470,7 +470,7 @@ PrefabInstance:
     - target: {fileID: 4028113543173942069, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: jumpClip
       value: 
-      objectReference: {fileID: 8300000, guid: ec6724cfc8d6be544bedb8a902dc767d, type: 3}
+      objectReference: {fileID: 8300000, guid: 7d1b02e6a759dea4f808744bc9a31143, type: 3}
     - target: {fileID: 4028113543173942069, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: audioManager
       value: 
@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7803275225293715206, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cf01e6d4027bd14ca7bb2c14f92b74b, type: 3}
     - target: {fileID: 7803275225293715207, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
       propertyPath: m_Name
       value: Spikes

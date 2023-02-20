@@ -133,6 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sinkDepth: 0
   sink: 0
+  audioManager: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9d3619714bf328d4f8cce466bc185247, type: 3}
   attachPos: {fileID: 4721964610960418988}
   door: {fileID: 0}
   fall: {fileID: 0}
