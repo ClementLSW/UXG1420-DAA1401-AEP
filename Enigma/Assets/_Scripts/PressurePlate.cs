@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class PressurePlate : MonoBehaviour, IAnchor
 {
@@ -12,12 +11,6 @@ public class PressurePlate : MonoBehaviour, IAnchor
     public bool sink;
     private GameObject item;
     private bool occupied;
-
-    [SerializeField]
-    private AudioManager audioManager;
-
-    [SerializeField]
-    private AudioClip clip;
 
     [SerializeField] private Transform attachPos;
     [SerializeField] private GameObject door;
@@ -56,7 +49,6 @@ public class PressurePlate : MonoBehaviour, IAnchor
                         gameObject.layer = 0;
                         gameObject.transform.SetParent(this.transform);
                         item = gameObject;
-                        audioManager.PlaySfx(clip);
                         return;
                     }
                 }
@@ -71,7 +63,6 @@ public class PressurePlate : MonoBehaviour, IAnchor
                         gameObject.layer = 0;
                         gameObject.transform.SetParent(this.transform);
                         item = gameObject;
-                        audioManager.PlaySfx(clip);
                         return;
                     }
                 }
