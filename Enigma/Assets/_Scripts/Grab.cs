@@ -11,7 +11,7 @@ public class Grab : MonoBehaviour
     private Transform grabPos;
 
     //private BoxCollider2D bc;
-    private GameObject selectedObj;
+    private GameObject selectedObj, puzzleInteractable;
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
@@ -25,7 +25,7 @@ public class Grab : MonoBehaviour
              if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 heldItem = selectedObj;
                 heldItem.transform.position = grabPos.position;
-                heldItem.GetComponentInParent<IAnchor>().occupied = false;
+                //heldItem.GetComponentInParent<IAnchor>().occupied = false;
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
              }
@@ -51,6 +51,10 @@ public class Grab : MonoBehaviour
                 
             }         
         }
+
+         if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
+            puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
+        }
     }
 
     // Once the proximity collider is triggered, the closest valid game object is selected
@@ -62,6 +66,9 @@ public class Grab : MonoBehaviour
             case 6:
                 Debug.Log("Targetfound");
                 target = col.gameObject;
+                break;
+            case 7:
+                puzzleInteractable = col.gameObject;
                 break;
         }
     }
@@ -77,6 +84,11 @@ public class Grab : MonoBehaviour
             case 6:
                 if (target = col.gameObject) {
                     target = null;
+                }
+                break;
+            case 7:
+                if(puzzleInteractable = col.gameObject) {
+                    puzzleInteractable = null;
                 }
                 break;
         }
