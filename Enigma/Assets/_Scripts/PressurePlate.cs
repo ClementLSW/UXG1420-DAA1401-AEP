@@ -15,7 +15,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
     [SerializeField] private Transform attachPos;
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject fall;
-    public enum plateType { RED, BLUE, YELLOW };
+    public enum plateType { RED, BLUE, YELLOW , VASE};
     [SerializeField] public plateType type;
 
     Transform IAnchor.attachPos => attachPos;
@@ -40,7 +40,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
 
         switch (type) {
             case plateType.RED:
-                if(gameObject.GetComponent<Vase>().type == Vase.vaseType.RED) {
+                if(gameObject.GetComponent<Pot>().type == Pot.potType.RED) {
                     if (door){
                         door.GetComponent<Door>().Open();
                         cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
@@ -54,7 +54,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
                 }
                 break;
             case plateType.BLUE:
-                if(gameObject.GetComponent<Vase>().type == Vase.vaseType.BLUE) {
+                if(gameObject.GetComponent<Pot>().type == Pot.potType.BLUE) {
                     if (fall) {
                         fall.AddComponent(typeof(Rigidbody2D));
                         cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
@@ -68,6 +68,18 @@ public class PressurePlate : MonoBehaviour, IAnchor
                 }
                 break;
             case plateType.YELLOW:
+                break;
+            case plateType.VASE:
+                if(gameObject.GetComponent<Vase>() && gameObject.GetComponent<Vase>().filled) {
+                    door.GetComponent<Door>().Open();
+                    cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    sink = true;
+                    gameObject.layer = 0;
+                    gameObject.transform.SetParent(this.transform);
+                    item = gameObject;
+                    return;
+                }
                 break;
         }
 

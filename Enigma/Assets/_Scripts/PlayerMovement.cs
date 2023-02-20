@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static AudioManager;
+using static _GameManager;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Player player;
+    private _GameManager gm;
 
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -15,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        gm = _GameManager.instance;
     }
 
     // Start is called before the first frame update
@@ -32,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
+        if(transform.position.y < -10) {
+            gm.LoadAlpha();
+        }
     }
 
     private void Jump(){

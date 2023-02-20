@@ -23,12 +23,6 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlayJump() {
         audioManager.PlaySfx(jumpClip);
     }
