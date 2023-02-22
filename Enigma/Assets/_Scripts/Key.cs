@@ -7,7 +7,9 @@ public class Key : MonoBehaviour
 {
     public void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "Player") {
-            SceneManager.LoadScene("Level1");
+            // SceneManager.LoadScene("Level1");
+            Debug.Log("KeyCollected");
+            Destroy(gameObject);
         }
     }
 }

@@ -11,7 +11,7 @@ public class Grab : MonoBehaviour
     private Transform grabPos;
 
     //private BoxCollider2D bc;
-    private GameObject selectedObj;
+    private GameObject selectedObj, puzzleInteractable;
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
@@ -24,8 +24,12 @@ public class Grab : MonoBehaviour
          if (!isHoldingItem){
              if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 heldItem = selectedObj;
+                Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;
-                heldItem.GetComponentInParent<IAnchor>().occupied = false;
+                if (heldItem.GetComponentInParent<IAnchor>() != null) {
+                    heldItem.GetComponentInParent<IAnchor>().occupied = false;
+                }
+                
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
              }
@@ -48,8 +52,18 @@ public class Grab : MonoBehaviour
                     //heldItem.transform.position = ap.position;
                     //heldItem.transform.SetParent(ap);
                 }
-                
-            }         
+            }
+            else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
+                heldItem.AddComponent<Rigidbody2D>();
+                heldItem.AddComponent<BoxCollider2D>();
+                heldItem.transform.SetParent(null);
+                heldItem = null;
+                isHoldingItem = false;
+            }      
+        }
+
+         if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
+            puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
         }
     }
 
@@ -62,6 +76,9 @@ public class Grab : MonoBehaviour
             case 6:
                 Debug.Log("Targetfound");
                 target = col.gameObject;
+                break;
+            case 7:
+                puzzleInteractable = col.gameObject;
                 break;
         }
     }
@@ -77,6 +94,11 @@ public class Grab : MonoBehaviour
             case 6:
                 if (target = col.gameObject) {
                     target = null;
+                }
+                break;
+            case 7:
+                if(puzzleInteractable = col.gameObject) {
+                    puzzleInteractable = null;
                 }
                 break;
         }
