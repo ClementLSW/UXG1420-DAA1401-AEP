@@ -11,7 +11,7 @@ public class Grab : MonoBehaviour
     private Transform grabPos;
 
     //private BoxCollider2D bc;
-    private GameObject selectedObj, puzzleInteractable;
+    [SerializeField] private GameObject selectedObj, puzzleInteractable;
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
@@ -63,7 +63,8 @@ public class Grab : MonoBehaviour
         }
 
          if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
-            puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
+            if (puzzleInteractable.GetComponent<InteractiveObject>()) puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
+            if (puzzleInteractable.GetComponent<Lights>()) puzzleInteractable.GetComponent<Lights>().SendSignal();
         }
     }
 
@@ -78,6 +79,7 @@ public class Grab : MonoBehaviour
                 target = col.gameObject;
                 break;
             case 7:
+                Debug.Log("Interactable found");
                 puzzleInteractable = col.gameObject;
                 break;
         }
