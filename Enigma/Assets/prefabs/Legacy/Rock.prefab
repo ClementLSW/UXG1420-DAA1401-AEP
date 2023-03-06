@@ -136,3 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d757722ea3ce3346b6b39713e535105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 10
+  rollingClip: {fileID: 8300000, guid: edd3e7bcb861df64798289c9d2d4842e, type: 3}
+  breakClip: {fileID: 8300000, guid: 2e46c15763d72954f92b33aa70872c10, type: 3}
