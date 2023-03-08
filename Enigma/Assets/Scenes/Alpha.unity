@@ -1330,9 +1330,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4028113543173942069, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
+<<<<<<< HEAD
       propertyPath: jumpClip
       value: 
       objectReference: {fileID: 8300000, guid: fc97b390c3003f447acfa69b1a6e8746, type: 3}
+=======
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 0}
+>>>>>>> Clement-Dev
     - target: {fileID: 7417846615861600425, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2095,8 +2101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716623589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150.2041, y: -12.2, z: 0}
-  m_LocalScale: {x: 382.46234, y: 1, z: 1}
+  m_LocalPosition: {x: 130.773, y: -12.2, z: 0}
+  m_LocalScale: {x: 421.32053, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5800,7 +5806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8736746861128135683, guid: 88c6fe3064748404888fb134a9818006, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9484389
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8736746861128135683, guid: 88c6fe3064748404888fb134a9818006, type: 3}
       propertyPath: m_LocalPosition.z

@@ -27,18 +27,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        var horizontalInput = Input.GetAxis("Horizontal");
-        if(Input.GetButtonDown("Jump")){
-            Debug.Log("Jump");
-            Jump(); 
+    void Update() {
+        if (player.isAlive) {
+            var horizontalInput = Input.GetAxis("Horizontal");
+            if(Input.GetButtonDown("Jump")){
+                Debug.Log("Jump");
+                Jump(); 
+            }
+            rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
         }
-        rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
-
-        if(transform.position.y < -10) {
-            gm.LoadAlpha();
-        }
+        
     }
 
     private void Jump(){
