@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 0}
-  jumpClip: {fileID: 8300000, guid: ec6724cfc8d6be544bedb8a902dc767d, type: 3}
+  jumpClip: {fileID: 8300000, guid: fc97b390c3003f447acfa69b1a6e8746, type: 3}
 --- !u!114 &7417846615861600430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabPos: {fileID: 7417846615900625895}
+  selectedObj: {fileID: 0}
+  puzzleInteractable: {fileID: 0}
   heldItem: {fileID: 0}
   isHoldingItem: 0
 --- !u!50 &7417846615861600419

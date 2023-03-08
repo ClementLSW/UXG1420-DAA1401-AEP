@@ -1036,6 +1036,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lit: 0
+  burnClip: {fileID: 8300000, guid: bf4c4f64c1747774ea624f2174f94201, type: 3}
+  openClip: {fileID: 8300000, guid: 83bb59dd0a08bf44db67d2a6d23d9f5d, type: 3}
   trapdoor: {fileID: 1341828835}
 --- !u!212 &405872692
 SpriteRenderer:
@@ -1327,6 +1329,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4028113543173942069, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
+<<<<<<< HEAD
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc97b390c3003f447acfa69b1a6e8746, type: 3}
+=======
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 0}
+>>>>>>> Clement-Dev
     - target: {fileID: 7417846615861600425, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1843,6 +1855,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2062664099579660004, guid: 383dc20fb1463ed489837cbe6e28cb39, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bbec4cfe309fba64e8792de02cdfd1e2, type: 3}
+    - target: {fileID: 2062664099579660004, guid: 383dc20fb1463ed489837cbe6e28cb39, type: 3}
       propertyPath: door
       value: 
       objectReference: {fileID: 0}
@@ -2085,8 +2101,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716623589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150.2041, y: -12.2, z: 0}
-  m_LocalScale: {x: 382.46234, y: 1, z: 1}
+  m_LocalPosition: {x: 130.773, y: -12.2, z: 0}
+  m_LocalScale: {x: 421.32053, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2349,7 +2365,8 @@ MonoBehaviour:
   - {fileID: 1298803110}
   - {fileID: 655684065}
   sequence: 020000000000000001000000
-  gears: {fileID: 0}
+  gears: {fileID: 8300000, guid: f44e07dad303842429fba4238f34f97d, type: 3}
+  creak: {fileID: 8300000, guid: a606c59132805ec4785228606e71925e, type: 3}
   thump: {fileID: 0}
   Door: {fileID: 1213073865}
 --- !u!1 &808069916
@@ -2681,6 +2698,10 @@ PrefabInstance:
       propertyPath: rubble
       value: 
       objectReference: {fileID: 1425661528615165856, guid: 8514fc42b608abf49b6199e0afd5f707, type: 3}
+    - target: {fileID: 7803275225293715206, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
+      propertyPath: breakClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e46c15763d72954f92b33aa70872c10, type: 3}
     - target: {fileID: 7803275225293715207, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
       propertyPath: m_Name
       value: Spikes (1)
@@ -3162,6 +3183,7 @@ MonoBehaviour:
   cap: 5
   secToFill: 5
   mask: {fileID: 1394154096}
+  fillClip: {fileID: 8300000, guid: ef1348a27c1d5a84286f821ca7d29067, type: 3}
 --- !u!212 &1250915785
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5784,7 +5806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8736746861128135683, guid: 88c6fe3064748404888fb134a9818006, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9484389
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8736746861128135683, guid: 88c6fe3064748404888fb134a9818006, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6656,6 +6678,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2062664099579660004, guid: 383dc20fb1463ed489837cbe6e28cb39, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bbec4cfe309fba64e8792de02cdfd1e2, type: 3}
     - target: {fileID: 2062664099579660004, guid: 383dc20fb1463ed489837cbe6e28cb39, type: 3}
       propertyPath: door
       value: 
