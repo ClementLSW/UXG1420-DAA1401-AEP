@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static AudioManager;
-using static _GameManager;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioClip jumpClip; 
 
+    public bool isAlive { get; set; }
+
     void Awake() {
         audioManager = AudioManager.instance;
         gm = _GameManager.instance;
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
         }
         else if (player != this)
             Destroy(gameObject);
-
+        isAlive = true;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -35,7 +36,8 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.name == "death block") {
-            gm.LoadAlpha();
+            Debug.Log("Shineeeeeh");
+            gm.Death(1);
         }
     }
 }
