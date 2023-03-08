@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class Vine : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class Vine : MonoBehaviour
     private float secsTillBurnt = 3.0f;
     private bool startToLight = false;
     private SpriteRenderer sr;
-
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip burnClip, openClip;
     [SerializeField] GameObject trapdoor;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class Vine : MonoBehaviour
         if (!lit){
             if (startToLight) {
                 secsTillLit -= Time.deltaTime;
+                audioManager.PlaySfx(burnClip);
             }
             if (secsTillLit <= 0) {
                 lit = true;
@@ -35,6 +39,8 @@ public class Vine : MonoBehaviour
                 secsTillBurnt -= Time.deltaTime;
             }
             else {
+                audioManager.StopSfx(burnClip);
+                audioManager.PlaySfx(openClip);
                 trapdoor.GetComponent<TrapDoor>().Open();
                 Destroy(gameObject);
             }
@@ -45,6 +51,7 @@ public class Vine : MonoBehaviour
         if (!lit) {
             if(collision.GetComponent<Torch>() && collision.GetComponent<Torch>().lit) {
                 startToLight = true;
+                audioManager.PlaySfx(burnClip);
             }
         }
     }

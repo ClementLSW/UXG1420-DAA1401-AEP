@@ -9,7 +9,7 @@ public class OrderPuzzle : MonoBehaviour {
     private int currentIndex = 0;
 
     AudioManager am = AudioManager.instance;
-    [SerializeField] AudioClip gears, thump;
+    [SerializeField] AudioClip gears, creak, thump;
 
     [SerializeField] GameObject Door;
     Camera cam;
@@ -20,11 +20,12 @@ public class OrderPuzzle : MonoBehaviour {
     public void CheckInput(int i) {
         if (interactives[i].GetComponent<InteractiveObject>().IsCorrectObject(sequence[currentIndex])) {
             // TODO: [BETA] Play audio for correct choice. like gears grinding
-            //am.PlaySfx(gears);
+            am.PlaySfx(gears);
             currentIndex++;
 
             // Check if the sequence is complete
             if (currentIndex == sequence.Length) {
+                am.PlaySfx(creak);
                 PuzzleComplete();
             }
         }
@@ -43,6 +44,6 @@ public class OrderPuzzle : MonoBehaviour {
         // Notify the player that they made a mistake
         cam.GetComponent<CameraShake>().StartShake(1.0f, 0.1f);
         // TODO: [BETA] Play audio for wrong choice, like a thump.
-        //am.PlaySfx(thump);
+        am.PlaySfx(thump);
     }
 }

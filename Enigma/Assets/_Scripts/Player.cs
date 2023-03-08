@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private _GameManager gm;
     
     [SerializeField]
-    private AudioClip jumpClip; 
+    private AudioClip jumpClip;
 
     public bool isAlive { get; set; }
 
