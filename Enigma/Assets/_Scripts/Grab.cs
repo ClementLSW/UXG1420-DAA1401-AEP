@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 // I am super depressed;
 
@@ -15,14 +16,22 @@ public class Grab : MonoBehaviour
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip grabClip;
 
-    void Awake() {
+    void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
+
+        void Awake() {
         isHoldingItem = false;
     }
 
     void Update() {
          if (!isHoldingItem){
-             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+            if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+                audioManager.PlaySfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;
@@ -36,6 +45,7 @@ public class Grab : MonoBehaviour
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
                 //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
+                audioManager.PlaySfx(grabClip);
                 if (target.GetComponent<PressurePlate>()) {
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     heldItem = null;
@@ -54,6 +64,7 @@ public class Grab : MonoBehaviour
                 }
             }
             else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
+                audioManager.PlaySfx(grabClip);
                 heldItem.AddComponent<Rigidbody2D>();
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);

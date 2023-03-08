@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static AudioManager;
 
 public class _GameManager : MonoBehaviour
 {
     public static _GameManager instance;
     public GameObject player;
     public Transform level1Spawn, alphaSpawn;
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip deathClip;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = AudioManager.instance;
+
         if (instance == null) {
             instance = this;
         }
@@ -26,6 +31,11 @@ public class _GameManager : MonoBehaviour
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadAlpha() {
@@ -75,7 +85,8 @@ public class _GameManager : MonoBehaviour
     }
 
     public void Death(int deathType) {
-        switch (deathType) {
+    audioManager.PlaySfx(deathClip);
+    switch (deathType) {
             case 0:
                 // Spikey death
                 Debug.Log("Spikey Death");
@@ -85,6 +96,6 @@ public class _GameManager : MonoBehaviour
                 break;
         }
 
-        SwitchState(2);
+        //SwitchState(2);
     }
 }

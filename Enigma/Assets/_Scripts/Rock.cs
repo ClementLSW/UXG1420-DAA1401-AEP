@@ -15,11 +15,11 @@ public class Rock : MonoBehaviour
     private void Start() {
         gm = FindObjectOfType<_GameManager>();
         audioManager = AudioManager.instance;
+        audioManager.PlaySfx(rollingClip);
     }
 
     private void Update() {
         if(duration >= 0) {
-            audioManager.PlaySfx(rollingClip);
             duration -= Time.deltaTime;
         }
         else {

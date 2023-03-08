@@ -10,9 +10,6 @@ public class Spike : MonoBehaviour
     public GameObject rubble;
 
     [SerializeField]
-    private AudioClip deathClip;
-
-    [SerializeField]
     private AudioClip breakClip;
 
     void Start()
@@ -25,7 +22,6 @@ public class Spike : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.tag == "Player") {
-            audioManager.PlaySfx(deathClip);
             //gm.Death(0);
             gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
         }else if(col.gameObject.tag == "Ground"){

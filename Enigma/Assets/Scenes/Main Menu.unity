@@ -350,7 +350,7 @@ MonoBehaviour:
         m_MethodName: PlaySfx
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 18cd2393f247d5644a4d8fcef9c70fba, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: ea1de5d5a2f8dc841ac21817e3716b75, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -651,6 +651,7 @@ MonoBehaviour:
   player: {fileID: 0}
   level1Spawn: {fileID: 0}
   alphaSpawn: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: a56f499cc5418aa4c82d1aa8b1eaaf2a, type: 3}
 --- !u!4 &1937029267
 Transform:
   m_ObjectHideFlags: 0

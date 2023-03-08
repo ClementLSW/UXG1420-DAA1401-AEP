@@ -137,6 +137,7 @@ MonoBehaviour:
   puzzleInteractable: {fileID: 0}
   heldItem: {fileID: 0}
   isHoldingItem: 0
+  grabClip: {fileID: 8300000, guid: 4990b81ba986329409ce4f3b9aefd036, type: 3}
 --- !u!50 &7417846615861600419
 Rigidbody2D:
   serializedVersion: 4
