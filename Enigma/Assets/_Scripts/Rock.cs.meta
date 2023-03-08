@@ -3,7 +3,9 @@ guid: 3d757722ea3ce3346b6b39713e535105
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rollingClip: {fileID: 8300000, guid: edd3e7bcb861df64798289c9d2d4842e, type: 3}
+  - breakClip: {fileID: 8300000, guid: 2e46c15763d72954f92b33aa70872c10, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -33,6 +33,12 @@ public class AudioManager : MonoBehaviour
         sfxSource.Play();
     }
 
+    public void StopSfx(AudioClip clip)
+    {
+        sfxSource.clip = clip;
+        sfxSource.Stop();
+    }
+
     private void PlayBGM(AudioClip clip, bool isLoop = true){
         musicSource.clip = clip;
         musicSource.loop = isLoop;
