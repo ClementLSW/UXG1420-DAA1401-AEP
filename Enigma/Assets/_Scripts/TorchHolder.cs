@@ -9,4 +9,8 @@ public class TorchHolder : MonoBehaviour, IAnchor
 
     Transform IAnchor.attachPos { get => attachPos; }
     bool IAnchor.occupied { get => occupied; set => occupied = value; }
+
+    public bool isValidObj(GameObject go) {
+        return go.GetComponent<Torch>();
+    }
 }

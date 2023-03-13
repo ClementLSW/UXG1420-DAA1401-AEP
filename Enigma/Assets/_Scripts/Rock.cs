@@ -31,7 +31,8 @@ public class Rock : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.name == "Player") {
             Debug.Log("SQUASH");
-            gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
+            gm.Death(2);
+            //gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
         }
     }
 }
