@@ -19,7 +19,7 @@ public class _GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    public GameObject player, deathMenu;
+    public GameObject player, deathMenu, mainMenu;
     public Transform spawn, level1Spawn, alphaSpawn;
     //public Canvas deathMenu;
 
@@ -46,25 +46,30 @@ public class _GameManager : MonoBehaviour
     }
 
     public void SwitchState(int state) {
-        player.GetComponent<Grab>().DestroyHeldItem();
-        if (deathMenu.activeSelf) {
-            deathMenu.SetActive(false);
-        }
+        if(player) player.GetComponent<Grab>().DestroyHeldItem();
+        
+        
+        //if(state != 0) {
+        //    mainMenu.SetActive(false);
+        //}
+        //else {
+        //    mainMenu.SetActive(true);
+        //}
         switch (state) {
             case 0:
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Main Menu");
                 break;
             case 1:
                 SceneManager.LoadScene("Tutorial");
                 break;
             case 2:
-                SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene("Level 1");
                 break;
             case 3:
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("Level 2");
                 break;
             case 4:
-                SceneManager.LoadScene("Level3");
+                SceneManager.LoadScene("Level 3");
                 break;
             case 5:
                 SceneManager.LoadScene("Secret");
@@ -72,16 +77,21 @@ public class _GameManager : MonoBehaviour
             case 6:
                 SceneManager.LoadScene("End");
                 break;
+            case 7:
+                SceneManager.LoadScene("Alpha");
+                break;
         }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         Debug.Log("Scene Loaded: " + scene.name);
-        deathMenu.SetActive(false);
+        if (deathMenu.activeSelf) {
+            deathMenu.SetActive(false);
+        }
         player = GameObject.FindWithTag("Player");
         player.GetComponent<Player>().isAlive = true;
 
-        if (scene.name == "Level1") {
+        if (scene.name == "Level 1") {
             if(spawn is null) spawn = GameObject.FindWithTag("Respawn").transform;
             player.transform.position = spawn.transform.position;
         }else if (scene.name == "Alpha") {
@@ -95,6 +105,7 @@ public class _GameManager : MonoBehaviour
         player.GetComponent<Player>().isAlive = false;
         deathMenu.SetActive(true);
         deathMenu.GetComponent<DeathManager>().renderDeathSprite(deathType);
+        player.GetComponent<Grab>().DestroyHeldItem();
         //switch (deathType) {
         //    case 0:
         //        // Spikey death

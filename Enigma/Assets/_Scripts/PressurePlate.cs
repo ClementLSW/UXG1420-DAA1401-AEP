@@ -96,6 +96,10 @@ public class PressurePlate : MonoBehaviour, IAnchor
         gameObject.transform.SetParent(this.transform);
     }
 
+    public bool isValidObj(GameObject go) {
+        return (go.GetComponent<Vase>() || go.GetComponent<Pot>());
+    }
+
     void Update(){
 
         if (sink){
