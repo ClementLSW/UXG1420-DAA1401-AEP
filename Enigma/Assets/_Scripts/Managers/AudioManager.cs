@@ -7,7 +7,10 @@ public class AudioManager : MonoBehaviour
 {
 
     // Static instance of the AudioManager to ensure only one instance exists in the scene
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
+    public static AudioManager GetInstance() {
+        return instance;
+    }
 
     public AudioSource musicSource;
     public AudioSource sfxSource;
@@ -17,14 +20,13 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        //Ensure only one instance of AudioManager exists
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
+        if (instance != null) {
             Destroy(gameObject);
-
-        //Dont destroy this object on scene change
-        DontDestroyOnLoad(gameObject);
+        }
+        else {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void PlaySfx(AudioClip clip)

@@ -66,6 +66,7 @@ public class Grab : MonoBehaviour
             else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
                 audioManager.PlaySfx(grabClip);
                 heldItem.AddComponent<Rigidbody2D>();
+                heldItem.GetComponent<Rigidbody2D>().freezeRotation = true;
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
                 heldItem = null;
