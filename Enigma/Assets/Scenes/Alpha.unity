@@ -2369,7 +2369,7 @@ MonoBehaviour:
   sequence: 020000000000000001000000
   gears: {fileID: 8300000, guid: f44e07dad303842429fba4238f34f97d, type: 3}
   creak: {fileID: 8300000, guid: a606c59132805ec4785228606e71925e, type: 3}
-  thump: {fileID: 0}
+  thump: {fileID: 8300000, guid: a3718f4bbe4ef134a97c0e372f8e89f6, type: 3}
   Door: {fileID: 1213073865}
 --- !u!1 &808069916
 GameObject:
