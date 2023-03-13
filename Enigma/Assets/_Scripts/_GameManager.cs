@@ -8,7 +8,7 @@ public class _GameManager : MonoBehaviour
 {
     public static _GameManager instance;
     public GameObject player;
-    public Transform level1Spawn, alphaSpawn;
+    public Transform level1Spawn, alphaSpawn, tutorialSpawn;
     private AudioManager audioManager;
     [SerializeField] private AudioClip deathClip;
 
@@ -74,7 +74,10 @@ public class _GameManager : MonoBehaviour
 
         if (scene.name == "Tutorial") {
             player = GameObject.FindWithTag("Player");
-        }else if(scene.name == "Level1") {
+            tutorialSpawn = GameObject.FindWithTag("Respawn").transform;
+            player.transform.position = tutorialSpawn.transform.position;
+        }
+        else if(scene.name == "Level1") {
             level1Spawn = GameObject.FindWithTag("Respawn").transform;
             player.transform.position = level1Spawn.transform.position;
         }else if (scene.name == "Alpha") {
@@ -85,7 +88,7 @@ public class _GameManager : MonoBehaviour
     }
 
     public void Death(int deathType) {
-    audioManager.PlaySfx(deathClip);
+    audioManager.PlayPlayerSfx(deathClip);
     switch (deathType) {
             case 0:
                 // Spikey death
