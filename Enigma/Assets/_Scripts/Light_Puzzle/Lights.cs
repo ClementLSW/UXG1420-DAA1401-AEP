@@ -19,11 +19,11 @@ public class Lights : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         lp = GetComponentInParent<LightPuzzle>();
 
-        //if (isLit) sr.sprite = lit;
-        //else sr.sprite = unlit;
+        if (isLit) sr.sprite = lit;
+        else sr.sprite = unlit;
 
-        if (isLit) sr.color = Color.yellow;
-        else sr.color = Color.white;
+        //if (isLit) sr.color = Color.yellow;
+        //else sr.color = Color.white;
     }
 
     public void SendSignal() {
@@ -36,13 +36,13 @@ public class Lights : MonoBehaviour
         isLit = !isLit;
 
         if (isLit) {
-            //sr.sprite = lit;
-            sr.color = Color.yellow;
+            sr.sprite = lit;
+            //sr.color = Color.yellow;
             lp.Increment();
         }
         else {
-            //sr.sprite = unlit;
-            sr.color = Color.white;
+            sr.sprite = unlit;
+            //sr.color = Color.white;
             lp.Decrement();
         }
 

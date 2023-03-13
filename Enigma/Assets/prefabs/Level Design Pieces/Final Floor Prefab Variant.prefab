@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5010736130274387680, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
+      propertyPath: m_Size.x
+      value: 141.7852
+      objectReference: {fileID: 0}
     - target: {fileID: 383615662351443938, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
       propertyPath: m_Name
-      value: Final Floor Prefab
+      value: Final Floor Prefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1586443564076052894, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
       propertyPath: m_RootOrder
@@ -21,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1586443564076052894, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.46
+      value: 230.69997
       objectReference: {fileID: 0}
     - target: {fileID: 1586443564076052894, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.47
+      value: -4.6947985
       objectReference: {fileID: 0}
     - target: {fileID: 1586443564076052894, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
       propertyPath: m_LocalPosition.z
