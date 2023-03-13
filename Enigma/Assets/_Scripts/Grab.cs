@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 // I am super depressed;
 
@@ -48,12 +47,20 @@ public class Grab : MonoBehaviour
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
                 //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
-                audioManager.PlayPlayerSfx(grabClip);
-                if (target.GetComponent<PressurePlate>()) {
+                audioManager.PlaySfx(grabClip);
+                if (
+                    target.GetComponent<PressurePlate>() && 
+                    target.GetComponent<IAnchor>().isValidObj(heldItem)
+                    ) {
+
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     heldItem = null;
                     isHoldingItem = false;
-                } else if (target.GetComponent<IAnchor>() != null && !target.GetComponent<IAnchor>().occupied) {
+                } else if (
+                    target.GetComponent<IAnchor>() != null && 
+                    !target.GetComponent<IAnchor>().occupied && 
+                    target.GetComponent<IAnchor>().isValidObj(heldItem)
+                    ) {
                     IAnchor ins = target.GetComponent<IAnchor>();
                     Transform ap = ins.attachPos;
                     heldItem.transform.position = ap.position;
@@ -61,14 +68,15 @@ public class Grab : MonoBehaviour
                     ins.occupied = true;
                     heldItem = null;
                     isHoldingItem = false;
-                    //Transform ap = target.GetComponent<Shelf>().attachPos;
-                    //heldItem.transform.position = ap.position;
-                    //heldItem.transform.SetParent(ap);
                 }
             }
-            else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
-                audioManager.PlayPlayerSfx(grabClip);
+            else if(
+                Input.GetKeyDown(KeyCode.E) && 
+                heldItem.GetComponent<Torch>()
+                ) {
+                audioManager.PlaySfx(grabClip);
                 heldItem.AddComponent<Rigidbody2D>();
+                heldItem.GetComponent<Rigidbody2D>().freezeRotation = true;
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
                 heldItem = null;
