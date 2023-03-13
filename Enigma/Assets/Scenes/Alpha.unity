@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 405872692}
   - component: {fileID: 405872691}
   - component: {fileID: 405872690}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Vine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3104,7 +3104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5622,71 +5622,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23e402d2e133b5a4e9e9c412df058ba2, type: 3}
---- !u!1001 &2009605223
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_RootOrder
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 86.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.0772104
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.30386326
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715203, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7803275225293715206, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: rubble
-      value: 
-      objectReference: {fileID: 1425661528615165856, guid: 8514fc42b608abf49b6199e0afd5f707, type: 3}
-    - target: {fileID: 7803275225293715206, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: breakClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2e46c15763d72954f92b33aa70872c10, type: 3}
-    - target: {fileID: 7803275225293715207, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
-      propertyPath: m_Name
-      value: Spikes (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a3beb5c848386ab4a94d893326a72eec, type: 3}
 --- !u!1 &2026712628
 GameObject:
   m_ObjectHideFlags: 0
