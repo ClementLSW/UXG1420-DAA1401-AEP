@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Player player;
+    private SpriteRenderer sr;
     private _GameManager gm;
 
     [SerializeField]
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        sr = GetComponent<SpriteRenderer>();
         gm = _GameManager.instance;
     }
 
@@ -30,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     void Update() {
         if (player.isAlive) {
             var horizontalInput = Input.GetAxis("Horizontal");
+            if (horizontalInput < 0) sr.flipX = true;
+            else if (horizontalInput > 0) sr.flipX = false;
             if(Input.GetButtonDown("Jump")){
                 Debug.Log("Jump");
                 Jump(); 
