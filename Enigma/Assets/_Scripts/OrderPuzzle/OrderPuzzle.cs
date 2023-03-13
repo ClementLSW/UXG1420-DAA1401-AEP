@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class OrderPuzzle : MonoBehaviour {
     public GameObject[] interactives;
     public int[] sequence;
     private int currentIndex = 0;
 
-    AudioManager am = AudioManager.instance;
+    AudioManager am;
     [SerializeField] AudioClip gears, creak, thump;
 
     [SerializeField] GameObject Door;
@@ -17,9 +16,14 @@ public class OrderPuzzle : MonoBehaviour {
         cam = Camera.main;
     }
 
+    private void Awake() {
+        am = AudioManager.instance;
+    }
+
     public void CheckInput(int i) {
         if (interactives[i].GetComponent<InteractiveObject>().IsCorrectObject(sequence[currentIndex])) {
             // TODO: [BETA] Play audio for correct choice. like gears grinding
+            interactives[i].GetComponent<InteractiveObject>().press();
             am.PlaySfx(gears);
             currentIndex++;
 
@@ -45,5 +49,8 @@ public class OrderPuzzle : MonoBehaviour {
         cam.GetComponent<CameraShake>().StartShake(1.0f, 0.1f);
         // TODO: [BETA] Play audio for wrong choice, like a thump.
         am.PlaySfx(thump);
+        foreach (GameObject io in interactives) {
+            io.GetComponent<InteractiveObject>().reset();
+        }
     }
 }
