@@ -6,4 +6,6 @@ public interface IAnchor
 {
     Transform attachPos { get; }
     bool occupied { get; set; }
+
+    bool isValidObj(GameObject go);
 }

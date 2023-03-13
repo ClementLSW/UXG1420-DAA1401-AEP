@@ -15,11 +15,11 @@ public class Rock : MonoBehaviour
     private void Start() {
         gm = FindObjectOfType<_GameManager>();
         audioManager = AudioManager.instance;
+        audioManager.PlaySfx(rollingClip);
     }
 
     private void Update() {
         if(duration >= 0) {
-            audioManager.PlaySfx(rollingClip);
             duration -= Time.deltaTime;
         }
         else {
@@ -31,7 +31,8 @@ public class Rock : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.name == "Player") {
             Debug.Log("SQUASH");
-            gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
+            gm.Death(2);
+            //gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
         }
     }
 }

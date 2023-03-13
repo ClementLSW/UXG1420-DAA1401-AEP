@@ -10,19 +10,30 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Transform grabPos;
 
+    //Script
+    public Pillar P_script;
+
     //private BoxCollider2D bc;
-    [SerializeField] private GameObject selectedObj, puzzleInteractable;
+    [SerializeField] private GameObject selectedObj, puzzleInteractable, pillar;
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip grabClip;
 
-    void Awake() {
+    void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
+
+        void Awake() {
         isHoldingItem = false;
     }
 
     void Update() {
          if (!isHoldingItem){
-             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+            if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+                audioManager.PlayPlayerSfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;
@@ -36,11 +47,20 @@ public class Grab : MonoBehaviour
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
                 //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
-                if (target.GetComponent<PressurePlate>()) {
+                audioManager.PlaySfx(grabClip);
+                if (
+                    target.GetComponent<PressurePlate>() && 
+                    target.GetComponent<IAnchor>().isValidObj(heldItem)
+                    ) {
+
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     heldItem = null;
                     isHoldingItem = false;
-                } else if (target.GetComponent<IAnchor>() != null && !target.GetComponent<IAnchor>().occupied) {
+                } else if (
+                    target.GetComponent<IAnchor>() != null && 
+                    !target.GetComponent<IAnchor>().occupied && 
+                    target.GetComponent<IAnchor>().isValidObj(heldItem)
+                    ) {
                     IAnchor ins = target.GetComponent<IAnchor>();
                     Transform ap = ins.attachPos;
                     heldItem.transform.position = ap.position;
@@ -48,13 +68,15 @@ public class Grab : MonoBehaviour
                     ins.occupied = true;
                     heldItem = null;
                     isHoldingItem = false;
-                    //Transform ap = target.GetComponent<Shelf>().attachPos;
-                    //heldItem.transform.position = ap.position;
-                    //heldItem.transform.SetParent(ap);
                 }
             }
-            else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
+            else if(
+                Input.GetKeyDown(KeyCode.E) && 
+                heldItem.GetComponent<Torch>()
+                ) {
+                audioManager.PlaySfx(grabClip);
                 heldItem.AddComponent<Rigidbody2D>();
+                heldItem.GetComponent<Rigidbody2D>().freezeRotation = true;
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
                 heldItem = null;
@@ -65,6 +87,10 @@ public class Grab : MonoBehaviour
          if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
             if (puzzleInteractable.GetComponent<InteractiveObject>()) puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
             if (puzzleInteractable.GetComponent<Lights>()) puzzleInteractable.GetComponent<Lights>().SendSignal();
+        }
+         else if (Input.GetKeyDown(KeyCode.E) && pillar)
+        {
+            P_script.Plant();
         }
     }
 

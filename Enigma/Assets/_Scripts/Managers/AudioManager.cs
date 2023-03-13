@@ -7,24 +7,27 @@ public class AudioManager : MonoBehaviour
 {
 
     // Static instance of the AudioManager to ensure only one instance exists in the scene
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
+    public static AudioManager GetInstance() {
+        return instance;
+    }
 
     public AudioSource musicSource;
     public AudioSource sfxSource;
+    public AudioSource playerSource;
     public AudioMixer audioMixer;
 
     public AudioClip[] bgmList;
 
     void Awake()
     {
-        //Ensure only one instance of AudioManager exists
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
+        if (instance != null) {
             Destroy(gameObject);
-
-        //Dont destroy this object on scene change
-        DontDestroyOnLoad(gameObject);
+        }
+        else {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void PlaySfx(AudioClip clip)
@@ -33,13 +36,19 @@ public class AudioManager : MonoBehaviour
         sfxSource.Play();
     }
 
+    public void PlayPlayerSfx(AudioClip clip)
+    {
+        playerSource.clip = clip;
+        playerSource.Play();
+    }
+
     public void StopSfx(AudioClip clip)
     {
         sfxSource.clip = clip;
         sfxSource.Stop();
     }
 
-    private void PlayBGM(AudioClip clip, bool isLoop = true){
+    public void PlayBGM(AudioClip clip, bool isLoop = true){
         musicSource.clip = clip;
         musicSource.loop = isLoop;
         musicSource.Play();

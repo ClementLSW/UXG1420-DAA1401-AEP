@@ -11,6 +11,6 @@ public class end : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        gm.SwitchState(6);
+        gm.SwitchState(2);
     }
 }
