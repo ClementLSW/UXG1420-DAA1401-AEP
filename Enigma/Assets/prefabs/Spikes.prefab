@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 31.24, y: -4.101, z: 0.30386326}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2860134402642266519}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124,6 +125,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb8aedb9bd1d544f9c767c0827b4e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rubble: {fileID: 0}
-  deathClip: {fileID: 0}
+  rubble: {fileID: 1614553310212009527, guid: 6cc8cadc363dd674bba681ad740621a2, type: 3}
   breakClip: {fileID: 8300000, guid: 2e46c15763d72954f92b33aa70872c10, type: 3}
+  rubbleSpawn: {fileID: 2860134402642266519}
+--- !u!1 &8925894516135555582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2860134402642266519}
+  m_Layer: 0
+  m_Name: rubblespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2860134402642266519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925894516135555582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7803275225293715203}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

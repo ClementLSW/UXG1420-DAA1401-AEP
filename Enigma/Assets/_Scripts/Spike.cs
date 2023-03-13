@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class Spike : MonoBehaviour
 {
     private _GameManager gm;
-    private AudioManager audioManager;
+    private AudioManager am;
     public GameObject rubble;
 
-    [SerializeField]
-    private AudioClip breakClip;
-
-    void Start()
-    {
-        audioManager = AudioManager.instance;
-    }
-        void Awake() {
-        gm = GameObject.FindWithTag("GM").GetComponent<_GameManager>();
+    [SerializeField] private AudioClip breakClip;
+    [SerializeField] private Transform rubbleSpawn;
+    void Awake() {
+        am = AudioManager.instance;
+        gm = _GameManager.instance;
     }
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D col) {
@@ -25,9 +20,9 @@ public class Spike : MonoBehaviour
             gm.Death(0);
             
         }else if(col.gameObject.tag == "Ground"){
-            audioManager.PlaySfx(breakClip);
-            Destroy(col.gameObject.GetComponent<Rigidbody2D>());
-            Instantiate(rubble, this.transform.position, Quaternion.identity);
+            am.PlaySfx(breakClip);
+            Instantiate(rubble, rubbleSpawn.position, Quaternion.identity);
+            Destroy(col.gameObject);
             Destroy(gameObject);
         }
     }
