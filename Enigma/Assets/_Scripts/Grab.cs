@@ -11,8 +11,11 @@ public class Grab : MonoBehaviour
     [SerializeField]
     private Transform grabPos;
 
+    //Script
+    public Pillar P_script;
+
     //private BoxCollider2D bc;
-    [SerializeField] private GameObject selectedObj, puzzleInteractable;
+    [SerializeField] private GameObject selectedObj, puzzleInteractable, pillar;
     [SerializeField] private GameObject heldItem;
     private GameObject target;
     [SerializeField] private bool isHoldingItem;
@@ -31,7 +34,7 @@ public class Grab : MonoBehaviour
     void Update() {
          if (!isHoldingItem){
             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
-                audioManager.PlaySfx(grabClip);
+                audioManager.PlayPlayerSfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;
@@ -45,7 +48,7 @@ public class Grab : MonoBehaviour
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
                 //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
-                audioManager.PlaySfx(grabClip);
+                audioManager.PlayPlayerSfx(grabClip);
                 if (target.GetComponent<PressurePlate>()) {
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     heldItem = null;
@@ -64,7 +67,7 @@ public class Grab : MonoBehaviour
                 }
             }
             else if(Input.GetKeyDown(KeyCode.E) && heldItem.GetComponent<Torch>()) {
-                audioManager.PlaySfx(grabClip);
+                audioManager.PlayPlayerSfx(grabClip);
                 heldItem.AddComponent<Rigidbody2D>();
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
@@ -76,6 +79,10 @@ public class Grab : MonoBehaviour
          if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
             if (puzzleInteractable.GetComponent<InteractiveObject>()) puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
             if (puzzleInteractable.GetComponent<Lights>()) puzzleInteractable.GetComponent<Lights>().SendSignal();
+        }
+         else if (Input.GetKeyDown(KeyCode.E) && pillar)
+        {
+            P_script.Plant();
         }
     }
 

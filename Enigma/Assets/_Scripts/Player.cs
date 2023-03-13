@@ -31,13 +31,13 @@ public class Player : MonoBehaviour
     }
 
     public void PlayJump() {
-        audioManager.PlaySfx(jumpClip);
+        audioManager.PlayPlayerSfx(jumpClip);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.name == "death block") {
             gm.Death(0);
-            //gm.LoadAlpha();
+            gm.LoadAlpha();
         }
     }
 }
