@@ -9,6 +9,7 @@ TagManager:
   - weight
   - GM
   - water
+  - DeathMenu
   layers:
   - Default
   - TransparentFX
