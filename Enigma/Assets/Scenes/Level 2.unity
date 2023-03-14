@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &23872990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &134118780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -837,6 +839,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 134118777}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &234800764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1097,6 +1101,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 1341828835}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &405872692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2494,6 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &1341828838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3684,6 +3691,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 23872987}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &2062192712
 SpriteRenderer:
   m_ObjectHideFlags: 0
