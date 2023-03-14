@@ -11,16 +11,18 @@ public class TrapDoor : MonoBehaviour
         animControl = GetComponent<Animator>();
     }
 
+    public void Burn() {
+        Debug.Log("TD_Burn");
+        animControl.SetTrigger("Burn");
+    }
+
     public void Open() {
+        Debug.Log("TD_Open");
         animControl.SetTrigger("Open");
         if (drop) {
             drop.AddComponent<Rigidbody2D>();
+            drop.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("key");
-        Destroy(gameObject);
     }
 }
