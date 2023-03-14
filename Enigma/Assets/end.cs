@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class end : MonoBehaviour
 {
@@ -11,6 +12,22 @@ public class end : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        gm.SwitchState(2);
+        var currentScene = SceneManager.GetActiveScene();
+        var currentSceneName = currentScene.name;
+        if (collision.gameObject.tag == "Player")
+        {
+            if (currentSceneName == "Tutorial")
+                gm.SwitchState(2);
+            else if (currentSceneName == "Level 1")
+                gm.SwitchState(3);
+            else if (currentSceneName == "Level 2")
+                gm.SwitchState(4);
+            else if (currentSceneName == "Level 3")
+                gm.SwitchState(5);
+            else if (currentSceneName == "Alpha")
+                gm.SwitchState(1);
+            else
+                Debug.Log("ERROR: end.cs");
+        }
     }
 }
