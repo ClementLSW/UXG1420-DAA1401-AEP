@@ -7,7 +7,7 @@ public class OrderPuzzle : MonoBehaviour {
     public int[] sequence;
     private int currentIndex = 0;
 
-    AudioManager am;
+    private AudioManager am;
     [SerializeField] AudioClip gears, creak, thump;
 
     [SerializeField] GameObject Door;
