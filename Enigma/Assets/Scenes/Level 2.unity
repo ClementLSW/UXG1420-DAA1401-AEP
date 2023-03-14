@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14639650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.08, y: 0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &23872990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &134118780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -837,6 +839,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 134118777}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &234800764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1097,6 +1101,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 1341828835}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &405872692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2326,11 +2332,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013902111296775539, guid: f3fccfd29dea1364aa7239e5fc120498, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 156.12724
+      value: 156.08
       objectReference: {fileID: 0}
     - target: {fileID: 6013902111296775539, guid: f3fccfd29dea1364aa7239e5fc120498, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.90622
+      value: 8.42
       objectReference: {fileID: 0}
     - target: {fileID: 6013902111296775539, guid: f3fccfd29dea1364aa7239e5fc120498, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2494,6 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adc88d96df3a345ae88a0bd20d1f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
 --- !u!212 &1341828838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2741,11 +2748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 899474981714158787, guid: b5342d36249a02c40a3c6fecebb49cd8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.30515
+      value: 161.93
       objectReference: {fileID: 0}
     - target: {fileID: 899474981714158787, guid: b5342d36249a02c40a3c6fecebb49cd8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83926666
+      value: 3.19
       objectReference: {fileID: 0}
     - target: {fileID: 899474981714158787, guid: b5342d36249a02c40a3c6fecebb49cd8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3684,6 +3691,8 @@ MonoBehaviour:
   burnClip: {fileID: 0}
   openClip: {fileID: 0}
   trapdoor: {fileID: 23872987}
+  burning: {fileID: 0}
+  burnt: {fileID: 0}
 --- !u!212 &2062192712
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3832,7 +3841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013902111296775539, guid: f3fccfd29dea1364aa7239e5fc120498, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1135
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 6013902111296775539, guid: f3fccfd29dea1364aa7239e5fc120498, type: 3}
       propertyPath: m_LocalPosition.z
