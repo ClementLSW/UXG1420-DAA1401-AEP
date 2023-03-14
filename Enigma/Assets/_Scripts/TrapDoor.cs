@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class TrapDoor : MonoBehaviour
 {
+    private Animator animControl;
+    [SerializeField] private GameObject drop;
 
-    private Rigidbody2D rb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        animControl = GetComponent<Animator>();
     }
 
     public void Open() {
-        rb = gameObject.AddComponent<Rigidbody2D>();
+        animControl.SetTrigger("Open");
+        if (drop) {
+            drop.AddComponent<Rigidbody2D>();
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Ground") {
-            Destroy(rb);
-        }
+        Debug.Log("key");
+        Destroy(gameObject);
     }
 }

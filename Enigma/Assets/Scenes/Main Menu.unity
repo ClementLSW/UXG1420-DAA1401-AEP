@@ -235,6 +235,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4459999299548015701, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
   m_PrefabInstance: {fileID: 5283687462679197311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &526938520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937029267}
+  m_Layer: 0
+  m_Name: 'Recovery GameObject for Transform (ID in file: 1937029267)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &676027838
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,43 +334,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 676027841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1937029266}
-        m_TargetAssemblyTypeName: _GameManager, Assembly-CSharp
-        m_MethodName: LoadTutorial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1342823465}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: StopBGM
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 5edba76e81e3f514294807adc855f11c, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1342823465}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySfx
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: ea1de5d5a2f8dc841ac21817e3716b75, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &676027841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,17 +471,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1342823465 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2504828317170532381, guid: 54c4689912ef7604c9de0dafdf95ba2d, type: 3}
-  m_PrefabInstance: {fileID: 1365705464}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216302618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 894a9789183bfb340909bbfb5029c22a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1342823469
 AudioSource:
   m_ObjectHideFlags: 0
@@ -753,25 +722,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e8442d25b9e64487c379372c3d2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  level1Spawn: {fileID: 0}
-  alphaSpawn: {fileID: 0}
-  tutorialSpawn: {fileID: 0}
-  deathClip: {fileID: 8300000, guid: a56f499cc5418aa4c82d1aa8b1eaaf2a, type: 3}
 --- !u!4 &1937029267
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937029265}
+  m_GameObject: {fileID: 526938520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.756545, y: -2.7204194, z: -0.022181442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137295209
 GameObject:
@@ -931,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 1937029266}
     - target: {fileID: 4225290193086322036, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4225290193086322036, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_LocalPosition.x

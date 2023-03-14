@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    private Animator _animator;
+    [SerializeField] private GameObject door;
+    private bool startOpen = false;
+    private float timeTillOpen = 2.0f;
 
-    private void Awake()
-    {
-        //_animator = GetComponent<Animator>();
-    }
-
-    [ContextMenu(itemName: "Open")]
     public void Open()
     {
-        //_animator.SetTrigger(name:"Open");
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        startOpen = true;
     }
-    // Start is called before the first frame update
+
+    public void Update() {
+        if(startOpen && timeTillOpen > 0.0f) {
+            door.transform.Translate(Vector3.up * Time.deltaTime);
+        }else if(timeTillOpen <= 0.0f) {
+            startOpen = false;
+            Destroy(this.GetComponent<Door>());
+        }
+    }
 
 
 }

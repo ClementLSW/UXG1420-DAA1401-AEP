@@ -9,9 +9,14 @@ public class Vase : MonoBehaviour
     public float cap = 5.0f;
     public float secToFill = 5.0f;
     private AudioManager audioManager;
-    [SerializeField] private GameObject mask;
+    private SpriteRenderer sr;
+    [SerializeField] private Sprite vase_filled;
+    //[SerializeField] private GameObject mask;
     [SerializeField] private AudioClip fillClip;
 
+    private void Awake() {
+        sr = GetComponent<SpriteRenderer>();
+    }
     private void Start()
     {
         audioManager = AudioManager.instance;
@@ -21,10 +26,11 @@ public class Vase : MonoBehaviour
         if (startFill && secToFill >0) {
             secToFill -= Time.deltaTime;
             Debug.Log(secToFill + "," + cap);
-            mask.transform.position += new Vector3(0, Time.deltaTime * 2 / 5.0f , 0);
+            //mask.transform.position += new Vector3(0, Time.deltaTime * 2 / 5.0f , 0);
         }
 
         if(secToFill <= 0) {
+            sr.sprite = vase_filled;
             audioManager.StopSfx(fillClip);
             filled = true;
         }

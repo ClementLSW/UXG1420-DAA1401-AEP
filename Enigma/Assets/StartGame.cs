@@ -20,6 +20,6 @@ public class StartGame : MonoBehaviour
     private void startGame() {
         AudioManager.instance.StopBGM(BGM);
         AudioManager.instance.PlaySfx(SFX);
-        _GameManager.instance.SwitchState(7);
+        _GameManager.instance.SwitchState(1);
     }
 }

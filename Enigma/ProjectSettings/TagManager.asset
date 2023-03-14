@@ -53,11 +53,17 @@ TagManager:
   - name: Objects
     uniqueID: 3618676633
     locked: 0
+  - name: Door
+    uniqueID: 1974264453
+    locked: 0
   - name: Player
     uniqueID: 3857857389
     locked: 0
   - name: Platforms
     uniqueID: 3118055985
+    locked: 0
+  - name: DoorFront
+    uniqueID: 1020611533
     locked: 0
   - name: UI
     uniqueID: 2623937613
