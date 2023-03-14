@@ -14,9 +14,6 @@ public class Torch : MonoBehaviour
 
     private void Start() {
         sr = GetComponentInChildren<SpriteRenderer>();
-    }
-
-    private void Awake() {
         if (lit) {
             sr.sprite = sprite;
             flame.SetActive(true);

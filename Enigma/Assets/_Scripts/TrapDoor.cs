@@ -11,7 +11,13 @@ public class TrapDoor : MonoBehaviour
         animControl = GetComponent<Animator>();
     }
 
+    public void Burn() {
+        Debug.Log("TD_Burn");
+        animControl.SetTrigger("Burn");
+    }
+
     public void Open() {
+        Debug.Log("TD_Open");
         animControl.SetTrigger("Open");
         if (drop) {
             drop.AddComponent<Rigidbody2D>();
