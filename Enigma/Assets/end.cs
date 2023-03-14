@@ -7,7 +7,7 @@ public class end : MonoBehaviour
     [SerializeField] _GameManager gm;
 
     private void Awake() {
-        gm = GameObject.FindWithTag("GM").GetComponent<_GameManager>();
+        gm = _GameManager.instance;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

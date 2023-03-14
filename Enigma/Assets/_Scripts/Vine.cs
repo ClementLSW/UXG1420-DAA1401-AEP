@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class Vine : MonoBehaviour
 {
@@ -10,14 +9,15 @@ public class Vine : MonoBehaviour
     private float secsTillBurnt = 3.0f;
     private bool startToLight = false;
     private SpriteRenderer sr;
-    private AudioManager audioManager;
+    private AudioManager am;
     [SerializeField] private AudioClip burnClip, openClip;
     [SerializeField] GameObject trapdoor;
+    [SerializeField] Sprite burning, burnt;
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        audioManager = AudioManager.instance;
+        am = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -26,12 +26,12 @@ public class Vine : MonoBehaviour
         if (!lit){
             if (startToLight) {
                 secsTillLit -= Time.deltaTime;
-                audioManager.PlaySfx(burnClip);
+                am.PlaySfx(burnClip);
             }
             if (secsTillLit <= 0) {
                 lit = true;
                 startToLight = false;
-                sr.color = Color.red;   // TODO: [ALPHA] Change it to actually animating it after Alpha
+                sr.sprite = burning;
             }
         }
         else {
@@ -39,10 +39,11 @@ public class Vine : MonoBehaviour
                 secsTillBurnt -= Time.deltaTime;
             }
             else {
-                audioManager.StopSfx(burnClip);
-                audioManager.PlaySfx(openClip);
+                am.StopSfx(burnClip);
+                am.PlaySfx(openClip);
                 trapdoor.GetComponent<TrapDoor>().Open();
-                Destroy(gameObject);
+                sr.sprite = burnt;
+                Destroy(GetComponent<Vine>());
             }
         }
     }
@@ -51,7 +52,7 @@ public class Vine : MonoBehaviour
         if (!lit) {
             if(collision.GetComponent<Torch>() && collision.GetComponent<Torch>().lit) {
                 startToLight = true;
-                audioManager.PlaySfx(burnClip);
+                am.PlaySfx(burnClip);
             }
         }
     }
