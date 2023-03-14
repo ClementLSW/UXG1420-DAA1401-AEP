@@ -20,7 +20,7 @@ public class _GameManager : MonoBehaviour
         }
     }
     public GameObject player, deathMenu, mainMenu;
-    public Transform spawn, level1Spawn, alphaSpawn;
+    //public Transform spawn, level1Spawn, level2Spawn, level3Spawn, alphaSpawn;
     //public Canvas deathMenu;
 
     // Start is called before the first frame update
@@ -91,13 +91,28 @@ public class _GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         player.GetComponent<Player>().isAlive = true;
 
-        if (scene.name == "Level 1") {
-            if(spawn is null) spawn = GameObject.FindWithTag("Respawn").transform;
-            player.transform.position = spawn.transform.position;
-        }else if (scene.name == "Alpha") {
-            alphaSpawn = GameObject.FindWithTag("Respawn").transform;
-            player.transform.position = alphaSpawn.position;
-        }
+        //if (scene.name == "Level 1") {
+        //    if (level1Spawn is null) {
+        //        level1Spawn = GameObject.FindWithTag("Respawn").transform;
+        //    }
+        //    player.transform.position = level1Spawn.transform.position;
+        //}
+        //else if (scene.name == "Level 2") {
+        //    if (level2Spawn is null) {
+        //        level2Spawn = GameObject.FindWithTag("Respawn").transform;
+        //    }
+        //    player.transform.position = level2Spawn.transform.position;
+        //}
+        //else if (scene.name == "Level 3") {
+        //    if (level3Spawn is null) {
+        //        level3Spawn = GameObject.FindWithTag("Respawn").transform;
+        //    }
+        //    player.transform.position = level3Spawn.transform.position;
+        //}
+        //else if (scene.name == "Alpha") {
+        //    alphaSpawn = GameObject.FindWithTag("Respawn").transform;
+        //    player.transform.position = alphaSpawn.position;
+        //}
     }
 
     public void Death(int deathType) {

@@ -26,17 +26,20 @@ public class Vine : MonoBehaviour
         if (!lit){
             if (startToLight) {
                 secsTillLit -= Time.deltaTime;
+                Debug.Log("Secs till lit: " + secsTillLit);
                 am.PlaySfx(burnClip);
             }
             if (secsTillLit <= 0) {
                 lit = true;
                 startToLight = false;
                 sr.sprite = burning;
+                trapdoor.GetComponent<TrapDoor>().Burn();
             }
         }
         else {
             if(secsTillBurnt > 0) {
                 secsTillBurnt -= Time.deltaTime;
+                Debug.Log("Secs till lit: " + secsTillBurnt);
             }
             else {
                 am.StopSfx(burnClip);

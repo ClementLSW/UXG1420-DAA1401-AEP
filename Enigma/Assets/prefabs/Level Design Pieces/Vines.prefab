@@ -134,9 +134,9 @@ MonoBehaviour:
   lit: 0
   burnClip: {fileID: 8300000, guid: bf4c4f64c1747774ea624f2174f94201, type: 3}
   openClip: {fileID: 8300000, guid: 83bb59dd0a08bf44db67d2a6d23d9f5d, type: 3}
-  trapdoor: {fileID: 0}
-  burning: {fileID: 0}
-  burnt: {fileID: 0}
+  trapdoor: {fileID: 4996974496291824856}
+  burning: {fileID: 21300000, guid: 9cf3207b855e79b4e96bed934d800707, type: 3}
+  burnt: {fileID: 21300000, guid: 0e7c9cc542c36be4b81a272f9abb7b4d, type: 3}
 --- !u!61 &4996974495031740430
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -676290663
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 34ade652349302544ba36dd3f049f745, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -270,7 +270,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4996974496291824856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -279,7 +279,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 1}
     oldSize: {x: 12.67, y: 3.23}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -299,7 +299,7 @@ Animator:
   m_GameObject: {fileID: 4996974496291824856}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f3c969ad8af3fc43974fffa5233c7b7, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf97afbbe7191904c9a95ce6ae38c6a3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
