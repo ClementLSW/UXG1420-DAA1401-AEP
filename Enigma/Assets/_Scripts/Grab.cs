@@ -20,10 +20,12 @@ public class Grab : MonoBehaviour
     [SerializeField] private bool isHoldingItem;
     private AudioManager audioManager;
     [SerializeField] private AudioClip grabClip;
+    private PlayerMovement pm;
 
     void Start()
     {
         audioManager = AudioManager.instance;
+        pm = GetComponent<PlayerMovement>();
     }
 
         void Awake() {
@@ -33,6 +35,8 @@ public class Grab : MonoBehaviour
     void Update() {
          if (!isHoldingItem){
             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
+                pm.animator.SetTrigger("Pickup");
+                pm.animator.ResetTrigger("Pickup");
                 audioManager.PlayPlayerSfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
@@ -43,10 +47,10 @@ public class Grab : MonoBehaviour
                 
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
+                pm.animator.SetBool("HoldItem", true);
              }
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
-                //Transform targetPos = target.GetComponentInChildren(typeof(Transform)) as Transform;
                 audioManager.PlaySfx(grabClip);
                 if (
                     target.GetComponent<PressurePlate>() && 
@@ -54,8 +58,13 @@ public class Grab : MonoBehaviour
                     ) {
 
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
+                    
+                    pm.animator.SetTrigger("Pickup");
+                    pm.animator.ResetTrigger("Pickup");
+
                     heldItem = null;
                     isHoldingItem = false;
+                    pm.animator.SetBool("HoldItem", false);
                 } else if (
                     target.GetComponent<IAnchor>() != null && 
                     !target.GetComponent<IAnchor>().occupied && 
@@ -66,8 +75,11 @@ public class Grab : MonoBehaviour
                     heldItem.transform.position = ap.position;
                     heldItem.transform.SetParent(ap);
                     ins.occupied = true;
+                    pm.animator.SetTrigger("Pickup");
+                    pm.animator.ResetTrigger("Pickup");
                     heldItem = null;
                     isHoldingItem = false;
+                    pm.animator.SetBool("HoldItem", false);
                 }
             }
             else if(
@@ -79,8 +91,11 @@ public class Grab : MonoBehaviour
                 heldItem.GetComponent<Rigidbody2D>().freezeRotation = true;
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
+                pm.animator.SetTrigger("Pickup");
+                pm.animator.ResetTrigger("Pickup");
                 heldItem = null;
                 isHoldingItem = false;
+                pm.animator.SetBool("HoldItem", false);
             }      
         }
 
