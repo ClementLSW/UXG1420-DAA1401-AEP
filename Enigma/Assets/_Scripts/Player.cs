@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     private AudioClip jumpClip;
 
     public bool isAlive { get; set; }
+    public bool key { get; set; }
 
     void Awake() {
         audioManager = AudioManager.instance;
         gm = _GameManager.instance;
+        this.key = false;
 
         if (player == null) {
             player = this;
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.name == "death block") {
             gm.Death(0);
-            gm.LoadAlpha();
+            //gm.LoadAlpha();
         }
     }
 }
