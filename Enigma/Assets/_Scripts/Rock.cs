@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class Rock : MonoBehaviour
 {
     private _GameManager gm;
     private AudioManager audioManager;
-    [SerializeField] float duration = 10.0f;
+    [SerializeField] float duration = 20.0f;
     [SerializeField] private AudioClip rollingClip;
     [SerializeField] private AudioClip breakClip;
 

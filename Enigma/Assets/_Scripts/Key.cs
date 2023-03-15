@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
         if(col.gameObject.tag == "Player") {
             // SceneManager.LoadScene("Level1");
             Debug.Log("KeyCollected");
+            col.gameObject.GetComponent<Player>().key = true;
             Destroy(gameObject);
         }
     }

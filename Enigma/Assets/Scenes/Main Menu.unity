@@ -1432,9 +1432,17 @@ PrefabInstance:
       value: DeathUIGroup
       objectReference: {fileID: 0}
     - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1937029266}
+    - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchState
+      objectReference: {fileID: 0}
     - target: {fileID: 4225290193086322036, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_RootOrder
       value: 6
