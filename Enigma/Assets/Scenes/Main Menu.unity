@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &181562472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437961880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1039,17 +1039,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437961879}
   m_CullTransparentMesh: 1
---- !u!114 &1751233339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2388820963155407000, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
-  m_PrefabInstance: {fileID: 5283687462679197311}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1869016849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,17 +1425,9 @@ PrefabInstance:
       value: DeathUIGroup
       objectReference: {fileID: 0}
     - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1937029266}
-    - target: {fileID: 3174037209789136581, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SwitchState
-      objectReference: {fileID: 0}
     - target: {fileID: 4225290193086322036, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1495,9 +1476,5 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1937029266}
-    - target: {fileID: 9223264117312419504, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
-      propertyPath: img
-      value: 
-      objectReference: {fileID: 1751233339}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff3746bbba73e54d9090b739c2fd031, type: 3}
