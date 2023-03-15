@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class end : MonoBehaviour
 {
     [SerializeField] _GameManager gm;
+    [SerializeField] bool secret = false;
 
     private void Awake() {
         gm = _GameManager.instance;
@@ -16,6 +17,10 @@ public class end : MonoBehaviour
         var currentSceneName = currentScene.name;
         if (collision.gameObject.tag == "Player")
         {
+            if (secret) {
+                gm.SwitchState(5);
+            }
+
             if (currentSceneName == "Tutorial")
                 gm.SwitchState(2);
             else if (currentSceneName == "Level 1")
@@ -23,7 +28,7 @@ public class end : MonoBehaviour
             else if (currentSceneName == "Level 2")
                 gm.SwitchState(4);
             else if (currentSceneName == "Level 3")
-                gm.SwitchState(5);
+                gm.SwitchState(6);
             else if (currentSceneName == "Alpha")
                 gm.SwitchState(1);
             else
