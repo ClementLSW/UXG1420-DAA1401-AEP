@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 public class _GameManager : MonoBehaviour
 {
     public static _GameManager instance { get; set; }
+    private AudioManager audioManager;
+    [SerializeField] private AudioClip BGM;
     public static _GameManager GetInstance() {
         return instance;
     }
 
     public void Awake() {
-        if(instance != null) {
+        audioManager = AudioManager.instance;
+
+        if (instance != null) {
             Destroy(gameObject);
         }
         else {
@@ -91,10 +95,11 @@ public class _GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         player.GetComponent<Player>().isAlive = true;
 
-        //if (scene.name == "Level 1") {
+        if (scene.name == "Level 1" || scene.name == "Level 2" || scene.name == "Level 3") {
+        audioManager.PlaySfx(BGM);
         //    if (level1Spawn is null) {
         //        level1Spawn = GameObject.FindWithTag("Respawn").transform;
-        //    }
+            }
         //    player.transform.position = level1Spawn.transform.position;
         //}
         //else if (scene.name == "Level 2") {

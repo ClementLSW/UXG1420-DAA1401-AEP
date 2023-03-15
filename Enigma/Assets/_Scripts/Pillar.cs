@@ -40,5 +40,6 @@ public class Pillar : MonoBehaviour
         explodingParticles.Play();
         PillarRender.enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
+        Destroy(gameObject);
     }
 }
