@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (player.isAlive) {
+
+            if(player.GetComponent<Transform>().position.y < -15) {
+                gm.Death(1);
+            }
+
             float horizontalInput = Input.GetAxis("Horizontal");
             if (horizontalInput != 0.0f) {
                 animator.SetBool("Walk", true);
