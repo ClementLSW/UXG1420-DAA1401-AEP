@@ -304,8 +304,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: _GameManager, Assembly-CSharp
-        m_MethodName: LoadAlpha
-        m_Mode: 1
+        m_MethodName: SwitchState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -432,11 +432,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e2e6c8118a20e47ac4a8c06a0bf631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 0}
+  img: {fileID: 2388820963155407000}
   deathSprites:
-  - {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
-  - {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  - {fileID: 21300000, guid: ac47ed8ccc79cf04dae198b9cc5b3a6f, type: 3}
+  - {fileID: 21300000, guid: 5733c690d333ba040b81e2df07c31bd6, type: 3}
+  - {fileID: 21300000, guid: 794625e0b14c4e04e8e19ec6ef0b4aaa, type: 3}
+  - {fileID: 21300000, guid: 8b845117e4736934890ed4ac12d79f38, type: 3}
   deathText: {fileID: 7273964668987481412}
 --- !u!1 &5657154240374330206
 GameObject:
