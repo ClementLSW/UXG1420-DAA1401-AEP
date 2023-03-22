@@ -76,6 +76,9 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
             animator.SetTrigger("Jump");
             player.PlayJump();
+            
+            //TODO: Uncomment this when not in god mode
+            isGrounded = false; 
         }
     }
 
