@@ -7,8 +7,8 @@ public class Pillar : MonoBehaviour
     public Renderer PillarRender;
     public Dynamite D_script;
     private AudioManager audioManager;
+    bool interacted = false;
     [SerializeField] private AudioClip explodeClip;
-    [SerializeField] private ParticleSystem explodingParticles = default;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,9 +20,14 @@ public class Pillar : MonoBehaviour
 
     public void Plant()
     {
-        audioManager.PlaySfx(explodeClip);
-        D_script.Explode();
-        StartCoroutine(Delay());
+        Debug.Log("start : " + interacted );
+        if (interacted == false)
+        {
+            audioManager.PlaySfx(explodeClip);
+            D_script.Explode();
+            StartCoroutine(Delay());
+            interacted = true;
+        }
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -36,8 +41,7 @@ public class Pillar : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(6);
-        explodingParticles.Play();
+        yield return new WaitForSeconds(5);
         PillarRender.enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject);
