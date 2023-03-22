@@ -79,6 +79,9 @@ public class _GameManager : MonoBehaviour
         }
         player = GameObject.FindWithTag("Player");
         player.GetComponent<Player>().isAlive = true;
+
+        if(scene.name == "Tutorial") StartCoroutine(CutsceneManager.instance.PlayCutscene(0));
+        if(scene.name == "Level 1")  StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
     }
 
     public void Death(int deathType) {
