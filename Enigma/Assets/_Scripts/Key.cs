@@ -10,6 +10,7 @@ public class Key : MonoBehaviour
             // SceneManager.LoadScene("Level1");
             Debug.Log("KeyCollected");
             col.gameObject.GetComponent<Player>().key = true;
+            HudManager.instance.showKeyHUD();
             Destroy(gameObject);
         }
     }
