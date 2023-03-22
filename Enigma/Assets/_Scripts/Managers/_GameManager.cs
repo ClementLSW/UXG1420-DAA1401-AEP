@@ -6,59 +6,44 @@ using UnityEngine.SceneManagement;
 public class _GameManager : MonoBehaviour
 {
     public static _GameManager instance { get; set; }
-    private AudioManager audioManager;
-    [SerializeField] private AudioClip BGM;
     public static _GameManager GetInstance() {
         return instance;
     }
+    public static bool isPaused { get; private set; }
 
     public void Awake() {
-        audioManager = AudioManager.instance;
-
-        if (instance != null) {
+        if(instance != null) {
             Destroy(gameObject);
         }
         else {
             instance = this;
+            isPaused = false;
             DontDestroyOnLoad(gameObject);
         }
     }
-    public GameObject player, deathMenu, mainMenu;
-    //public Transform spawn, level1Spawn, level2Spawn, level3Spawn, alphaSpawn;
-    //public Canvas deathMenu;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    if (instance == null) {
-    //        instance = this;
-    //    }
-    //    else if (instance != this) {
-    //        Destroy(gameObject);
-    //    }
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            togglePause();
+        }
+    }
 
-
-    //    DontDestroyOnLoad(gameObject);
-    //}
+    public GameObject player, deathMenu, mainMenu, pauseMenu;
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void LoadAlpha() {
-        SceneManager.LoadScene("Alpha");
+    public void togglePause() {
+        isPaused = !isPaused;
+        pauseMenu.SetActive(isPaused);
+        Time.timeScale = isPaused ? 0f : 1f;
+        Debug.Log(isPaused);
     }
+
 
     public void SwitchState(int state) {
         if(player) player.GetComponent<Grab>().DestroyHeldItem();
-        
-        
-        //if(state != 0) {
-        //    mainMenu.SetActive(false);
-        //}
-        //else {
-        //    mainMenu.SetActive(true);
-        //}
         switch (state) {
             case 0:
                 SceneManager.LoadScene("Main Menu");
@@ -94,30 +79,6 @@ public class _GameManager : MonoBehaviour
         }
         player = GameObject.FindWithTag("Player");
         player.GetComponent<Player>().isAlive = true;
-
-        if (scene.name == "Level 1" || scene.name == "Level 2" || scene.name == "Level 3") {
-        audioManager.PlaySfx(BGM);
-        //    if (level1Spawn is null) {
-        //        level1Spawn = GameObject.FindWithTag("Respawn").transform;
-            }
-        //    player.transform.position = level1Spawn.transform.position;
-        //}
-        //else if (scene.name == "Level 2") {
-        //    if (level2Spawn is null) {
-        //        level2Spawn = GameObject.FindWithTag("Respawn").transform;
-        //    }
-        //    player.transform.position = level2Spawn.transform.position;
-        //}
-        //else if (scene.name == "Level 3") {
-        //    if (level3Spawn is null) {
-        //        level3Spawn = GameObject.FindWithTag("Respawn").transform;
-        //    }
-        //    player.transform.position = level3Spawn.transform.position;
-        //}
-        //else if (scene.name == "Alpha") {
-        //    alphaSpawn = GameObject.FindWithTag("Respawn").transform;
-        //    player.transform.position = alphaSpawn.position;
-        //}
     }
 
     public void Death(int deathType) {
