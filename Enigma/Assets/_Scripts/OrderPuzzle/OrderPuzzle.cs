@@ -11,6 +11,7 @@ public class OrderPuzzle : MonoBehaviour {
     [SerializeField] AudioClip gears, creak, thump;
 
     [SerializeField] GameObject Door;
+    [SerializeField] GameObject fall;
     Camera cam;
     private void Start() {
         cam = Camera.main;
@@ -41,7 +42,8 @@ public class OrderPuzzle : MonoBehaviour {
 
     private void PuzzleComplete() {
         // Trigger an event that completes the puzzle
-        Door.GetComponent<Door>().Open();
+        if(Door) Door.GetComponent<Door>().Open();
+        else if (fall) fall.AddComponent(typeof(Rigidbody2D));
     }
 
     private void NotifyPlayerOfMistake() {
