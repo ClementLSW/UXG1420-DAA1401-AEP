@@ -7,11 +7,14 @@ public class Dynamite : MonoBehaviour
     public Renderer DynamiteRender;
     [SerializeField] private ParticleSystem explodingParticles = default;
     [SerializeField] private ParticleSystem assistingParticles = default;
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         DynamiteRender = GetComponent<Renderer>();
         DynamiteRender.enabled = false;
+        animator = GetComponent<Animator>();
     }
 
     public void Explode()

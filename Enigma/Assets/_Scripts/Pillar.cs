@@ -6,6 +6,7 @@ public class Pillar : MonoBehaviour
 {
     public Renderer PillarRender;
     public Dynamite D_script;
+    public Explosion E_script;
     private AudioManager audioManager;
     bool interacted = false;
     [SerializeField] private AudioClip explodeClip;
@@ -25,6 +26,7 @@ public class Pillar : MonoBehaviour
         {
             audioManager.PlaySfx(explodeClip);
             D_script.Explode();
+            E_script.Explode();
             StartCoroutine(Delay());
             interacted = true;
         }
