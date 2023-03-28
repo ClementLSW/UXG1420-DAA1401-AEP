@@ -4695,6 +4695,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: e7d79e20ef173bd4296398b4cc14e4c1, type: 3}
+    - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
       propertyPath: mainMenu
       value: 
       objectReference: {fileID: 358353581}
