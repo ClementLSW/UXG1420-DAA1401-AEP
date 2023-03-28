@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     public Transform target;
 
     //[SerializeField]
-    private Vector3 offset = new Vector3(0, 2.5f, -10);
+    private Vector3 offset = new Vector3(0, 1f, -10);
 
     [Range(2,10)]
     public float smoothing;

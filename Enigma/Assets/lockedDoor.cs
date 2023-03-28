@@ -15,6 +15,7 @@ public class lockedDoor : MonoBehaviour
             if (collision.gameObject.GetComponent<Player>().key) {
                 door.Open();
                 collision.gameObject.GetComponent<Player>().key = false;
+                HudManager.instance.hideKeyHUD();
             }
         }
     }

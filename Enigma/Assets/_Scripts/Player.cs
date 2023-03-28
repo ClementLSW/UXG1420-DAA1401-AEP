@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public static Player player;
+    public static Player instance { get; private set; }
 
     [SerializeField]
     private AudioManager audioManager;
@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private AudioClip jumpClip;
 
     public bool isAlive { get; set; }
+    public bool isControllable { get; set; }
     public bool key { get; set; }
 
     void Awake() {
@@ -22,10 +23,10 @@ public class Player : MonoBehaviour
         gm = _GameManager.instance;
         this.key = false;
 
-        if (player == null) {
-            player = this;
+        if (instance == null) {
+            instance = this;
         }
-        else if (player != this)
+        else if (instance != this)
             Destroy(gameObject);
         isAlive = true;
         DontDestroyOnLoad(gameObject);
@@ -38,7 +39,6 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.name == "death block") {
             gm.Death(0);
-            //gm.LoadAlpha();
         }
     }
 }

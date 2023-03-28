@@ -36,6 +36,7 @@ public class Grab : MonoBehaviour
          if (!isHoldingItem){
             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 pm.animator.SetTrigger("Pickup");
+                pm.animator.SetBool("HoldItem", true);
                 pm.animator.ResetTrigger("Pickup");
                 audioManager.PlayPlayerSfx(grabClip);
                 heldItem = selectedObj;
@@ -47,7 +48,7 @@ public class Grab : MonoBehaviour
                 
                 heldItem.transform.SetParent(grabPos);
                 isHoldingItem = true;
-                pm.animator.SetBool("HoldItem", true);
+                
              }
         }else {                                                     // Held item
             if (Input.GetKeyDown(KeyCode.E) && target){
@@ -60,11 +61,12 @@ public class Grab : MonoBehaviour
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     
                     pm.animator.SetTrigger("Pickup");
+                    pm.animator.SetBool("HoldItem", false);
                     pm.animator.ResetTrigger("Pickup");
 
                     heldItem = null;
                     isHoldingItem = false;
-                    pm.animator.SetBool("HoldItem", false);
+                    
                 } else if (
                     target.GetComponent<IAnchor>() != null && 
                     !target.GetComponent<IAnchor>().occupied && 
@@ -76,10 +78,11 @@ public class Grab : MonoBehaviour
                     heldItem.transform.SetParent(ap);
                     ins.occupied = true;
                     pm.animator.SetTrigger("Pickup");
+                    pm.animator.SetBool("HoldItem", false);
                     pm.animator.ResetTrigger("Pickup");
                     heldItem = null;
                     isHoldingItem = false;
-                    pm.animator.SetBool("HoldItem", false);
+                    
                 }
             }
             else if(
@@ -92,10 +95,11 @@ public class Grab : MonoBehaviour
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
                 pm.animator.SetTrigger("Pickup");
+                pm.animator.SetBool("HoldItem", false);
                 pm.animator.ResetTrigger("Pickup");
                 heldItem = null;
                 isHoldingItem = false;
-                pm.animator.SetBool("HoldItem", false);
+                
             }      
         }
 

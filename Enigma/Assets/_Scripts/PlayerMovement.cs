@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
-using static _GameManager;
 
 public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D rb;
-    public Player player;
+    //public Player player;
     private SpriteRenderer sr;
     private _GameManager gm;
     public Animator animator;
@@ -21,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
-        player = GetComponent<Player>();
+        //player = Player.instance;
         sr = GetComponent<SpriteRenderer>();
         gm = _GameManager.instance;
         animator = GetComponent<Animator>();
@@ -35,39 +33,37 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (player.isAlive) {
+        if (Player.instance.isAlive) {
 
-            if(player.GetComponent<Transform>().position.y < -15) {
+            if(Player.instance.GetComponent<Transform>().position.y < -15) {
                 gm.Death(1);
             }
-
-            float horizontalInput = Input.GetAxis("Horizontal");
-            if (horizontalInput != 0.0f) {
-                animator.SetBool("Walk", true);
-            }
-            else {
-                animator.SetBool("Walk", false);
-            }
-            if (horizontalInput < 0) {
-                sr.flipX = true;
-                if (gp.transform.localPosition.x > 0) {
-                    gp.transform.localPosition = new Vector3(-1f, 0.5f);
+            if (Player.instance.isControllable) {
+                float horizontalInput = Input.GetAxis("Horizontal");
+                if (horizontalInput != 0.0f) {
+                    animator.SetBool("Walk", true);
                 }
-            }
-
-            else if (horizontalInput > 0) {
-                sr.flipX = false;
-                if (gp.transform.localPosition.x < 0) {
-                    gp.transform.localPosition = new Vector3(1f, 0.5f);
+                else {
+                    animator.SetBool("Walk", false);
                 }
+                if (horizontalInput < 0) {
+                    sr.flipX = true;
+                    if (gp.transform.localPosition.x > 0) {
+                        gp.transform.localPosition = new Vector3(-1f, 0.5f);
+                    }
+                }else if (horizontalInput > 0) {
+                    sr.flipX = false;
+                    if (gp.transform.localPosition.x < 0) {
+                        gp.transform.localPosition = new Vector3(1f, 0.5f);
+                    }
+                }
+                if (Input.GetButtonDown("Jump")) {
+                    Debug.Log("Jump");
+                    Jump();
+                }
+                rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
             }
-            if(Input.GetButtonDown("Jump")){
-                Debug.Log("Jump");
-                Jump(); 
-            }
-            rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
         }
-        
     }
 
     private void Jump(){
@@ -75,7 +71,10 @@ public class PlayerMovement : MonoBehaviour {
             Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
             animator.SetTrigger("Jump");
-            player.PlayJump();
+            Player.instance.PlayJump();
+            
+            //TODO: Uncomment this when not in god mode
+            isGrounded = false; 
         }
     }
 
