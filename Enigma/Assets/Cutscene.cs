@@ -75,4 +75,12 @@ public class Cutscene : MonoBehaviour
             // Increment the current panel index
             //currentPanelIndex++;
     }
+
+    public void forceEndCutscene() {
+        StopCoroutine(FadeInPanels());
+        StopCoroutine(FadeOutPanels()); 
+        foreach (CanvasGroup panel in panels) {
+            panel.alpha = 0f;
+        }
+    }
 }

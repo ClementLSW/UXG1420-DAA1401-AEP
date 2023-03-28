@@ -43,7 +43,7 @@ public class _GameManager : MonoBehaviour
 
 
     public void SwitchState(int state) {
-        if(player) player.GetComponent<Grab>().DestroyHeldItem();
+        if(Player.instance != null) Player.instance.GetComponent<Grab>().DestroyHeldItem();
         switch (state) {
             case 0:
                 SceneManager.LoadScene("Main Menu");
@@ -77,33 +77,32 @@ public class _GameManager : MonoBehaviour
         if (deathMenu.activeSelf) {
             deathMenu.SetActive(false);
         }
-        player = GameObject.FindWithTag("Player");
-        player.GetComponent<Player>().isAlive = true;
+        //player = GameObject.FindWithTag("Player");
+        if(Player.instance != null) {
+            Player.instance.isAlive = true;
+        }
 
         if(scene.name == "Tutorial") StartCoroutine(CutsceneManager.instance.PlayCutscene(0));
         if(scene.name == "Level 1")  StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
     }
 
     public void Death(int deathType) {
-        Debug.Log("Died");
-        player.GetComponent<Player>().isAlive = false;
+        /*  Governs the game state behaviour on Player Death
+         *  Params: deathType operation code
+         *  0   -   Player fell on spikes
+         *  1   -   Player fell from height
+         *  2   -   Player crushed by boulder
+         */
+
+        // Set player alive status to dead;
+        Player.instance.isAlive = false;
+        //player.GetComponent<Player>().isAlive = false;
+
+        // Prepare death Menu
         deathMenu.SetActive(true);
         deathMenu.GetComponent<DeathManager>().renderDeathSprite(deathType);
+
+        // Destroy whatever player is holding
         player.GetComponent<Grab>().DestroyHeldItem();
-        //switch (deathType) {
-        //    case 0:
-        //        // Spikey death
-        //        Debug.Log("Spikey Death");
-        //        break;
-        //    case 1:
-        //        // Falling death
-        //        break;
-        //    case 2:
-        //        Debug.Log("Crushed By Boulder");
-        //        break;
-        //    default:
-        //        Debug.Log("Something Went Wrong");
-        //        break;
-        //}
     }
 }

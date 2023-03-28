@@ -8,6 +8,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] public GameObject[] Cutscenes;
     public GameObject cutsceneBG;
     private int currentCutscene = -1;
+    private bool skippable = false;
 
     public static CutsceneManager instance { get; private set; }
 
@@ -23,31 +24,31 @@ public class CutsceneManager : MonoBehaviour
     }
 
     private void Update() {
-        if(currentCutscene == 0 || currentCutscene == 2 || currentCutscene == 3) {
+        if((currentCutscene == 0 || currentCutscene == 2 || currentCutscene == 3) && skippable) {
             if(Input.GetButtonDown("Jump")){
                 StartCoroutine(PlayNextCutscene(currentCutscene, currentCutscene + 1));
             }
-        }else if(currentCutscene >= 0) {
+        }else if(currentCutscene >= 0 && skippable) {
             if (Input.GetButtonDown("Jump")) {
                 StartCoroutine(EndCutscene(currentCutscene));
+                Player.instance.isControllable = true;
                 currentCutscene = -1;
             }
         }
     }
 
     public IEnumerator PlayCutscene(int id) {
-        Debug.Log("Fading in cutscene BG");
-        // Start by fading in a Black Screen
-        yield return StartCoroutine(cutsceneBG.GetComponent<CutsceneBG>().FadeInImage());
-
+        currentCutscene = id;
+        skippable = false;
         Debug.Log("Playing cutscene " + (id+1));
         // Play cutscene sequence
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().PlayCutscene());
-
-        currentCutscene = id;
+        skippable = true;
     }
 
     public IEnumerator PlayNextCutscene(int old_id, int id) {
+        currentCutscene = id;
+        skippable = false;
         Debug.Log("Fading Out Cutscene " + id);
         // Start by fading out a old cutscene
         yield return StartCoroutine(Cutscenes[old_id].GetComponent<Cutscene>().EndCutscene());
@@ -55,12 +56,12 @@ public class CutsceneManager : MonoBehaviour
         Debug.Log("Fading In Cutscene " + (id + 1));
         // Play cutscene sequence
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().PlayCutscene());
-        currentCutscene = id;
+        skippable = true;
     }
 
     public IEnumerator EndCutscene(int id) {
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().EndCutscene());
 
-        yield return StartCoroutine(cutsceneBG.GetComponent<CutsceneBG>().FadeOutImage());
+        yield return StartCoroutine(CutsceneBG.instance.FadeOutImage());
     }
 }

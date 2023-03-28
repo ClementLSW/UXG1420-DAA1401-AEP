@@ -5,10 +5,18 @@ using UnityEngine.UI;
 
 public class CutsceneBG : MonoBehaviour
 {
-    public float fadeTime = 2f;
+    public static CutsceneBG instance { get; private set; }
+
+    public float fadeTime = 1f;
     [SerializeField] private CanvasGroup bg;
 
     private void Awake() {
+        if (instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(this);
+        }
         bg.alpha = 0f;
     }
 
