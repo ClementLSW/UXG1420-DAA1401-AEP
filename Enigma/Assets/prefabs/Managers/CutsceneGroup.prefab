@@ -3129,7 +3129,7 @@ GameObject:
   - component: {fileID: 9047140987859509895}
   - component: {fileID: 9047140987859509894}
   - component: {fileID: 9047140987859509893}
-  - component: {fileID: 8094663164089864467}
+  - component: {fileID: 7160488220880583109}
   m_Layer: 5
   m_Name: CutsceneBG
   m_TagString: Untagged
@@ -3219,7 +3219,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8094663164089864467
+--- !u!114 &7160488220880583109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

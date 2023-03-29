@@ -91,6 +91,9 @@ public class _GameManager : MonoBehaviour
             Debug.Log("BG Fade");
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
         }
+        else {
+            Destroy(Player.instance.gameObject);
+        }
     }
 
     public void Death(int deathType) {

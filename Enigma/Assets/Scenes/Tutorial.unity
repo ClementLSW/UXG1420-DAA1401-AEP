@@ -6346,11 +6346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6719571189754384887, guid: 9b4ad454a60b9584182c014df383df00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.218432
+      value: -6.99
       objectReference: {fileID: 0}
     - target: {fileID: 6719571189754384887, guid: 9b4ad454a60b9584182c014df383df00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3
+      value: -2.09
       objectReference: {fileID: 0}
     - target: {fileID: 6719571189754384887, guid: 9b4ad454a60b9584182c014df383df00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12719,10 +12719,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4028113543173942069, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
-      propertyPath: jumpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fc97b390c3003f447acfa69b1a6e8746, type: 3}
     - target: {fileID: 7417846615861600416, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: pillar
       value: 
@@ -12745,7 +12741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7417846615861600428, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 7417846615861600428, guid: e57ab77e61bf9d346b2e4a982b153853, type: 3}
       propertyPath: m_LocalPosition.z

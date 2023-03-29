@@ -1397,6 +1397,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 607724142047518994, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1937029266}
     - target: {fileID: 4696105341164109999, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1441,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6306349962790087454, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1937029266}
     - target: {fileID: 8541825161304983093, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
       propertyPath: m_Name
       value: UIGroup
