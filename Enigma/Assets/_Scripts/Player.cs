@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public bool isAlive { get; set; }
     public bool isControllable { get; set; }
+    public bool hasDynamite { get; set; }
     public bool key { get; set; }
 
     void Awake() {
