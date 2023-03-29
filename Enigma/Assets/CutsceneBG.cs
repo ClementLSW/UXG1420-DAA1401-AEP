@@ -22,13 +22,14 @@ public class CutsceneBG : MonoBehaviour
 
     public IEnumerator FadeInImage() {
         // Fade in the image over the fade time
+        Debug.Log("Fading BG");
         float t = 0f;
         while (t < fadeTime) {
             bg.alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
             t += Time.deltaTime;
             yield return null;
         }
-
+        Debug.Log("FadeInFinished");
         // Set the alpha value of the image to 1
         bg.alpha = 1f;
     }
@@ -44,5 +45,6 @@ public class CutsceneBG : MonoBehaviour
 
         // Set the alpha value of the image to 1
         bg.alpha = 0f;
+        Debug.Log("FadeOutFinished");
     }
 }

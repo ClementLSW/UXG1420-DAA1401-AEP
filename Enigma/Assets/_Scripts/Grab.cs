@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // I am super depressed;
 
@@ -37,7 +38,7 @@ public class Grab : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && selectedObj){       // Empty hand
                 pm.animator.SetTrigger("Pickup");
                 pm.animator.SetBool("HoldItem", true);
-                pm.animator.ResetTrigger("Pickup");
+                pm.animator.ResetTrigger("SetDown");
                 audioManager.PlayPlayerSfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
@@ -60,7 +61,7 @@ public class Grab : MonoBehaviour
 
                     target.GetComponent<PressurePlate>().TrySink(heldItem);
                     
-                    pm.animator.SetTrigger("Pickup");
+                    pm.animator.SetTrigger("SetDown");
                     pm.animator.SetBool("HoldItem", false);
                     pm.animator.ResetTrigger("Pickup");
 
@@ -77,7 +78,7 @@ public class Grab : MonoBehaviour
                     heldItem.transform.position = ap.position;
                     heldItem.transform.SetParent(ap);
                     ins.occupied = true;
-                    pm.animator.SetTrigger("Pickup");
+                    pm.animator.SetTrigger("SetDown");
                     pm.animator.SetBool("HoldItem", false);
                     pm.animator.ResetTrigger("Pickup");
                     heldItem = null;
@@ -94,7 +95,8 @@ public class Grab : MonoBehaviour
                 heldItem.GetComponent<Rigidbody2D>().freezeRotation = true;
                 heldItem.AddComponent<BoxCollider2D>();
                 heldItem.transform.SetParent(null);
-                pm.animator.SetTrigger("Pickup");
+                SceneManager.MoveGameObjectToScene(heldItem, SceneManager.GetActiveScene());
+                pm.animator.SetTrigger("SetDown");
                 pm.animator.SetBool("HoldItem", false);
                 pm.animator.ResetTrigger("Pickup");
                 heldItem = null;
@@ -107,7 +109,7 @@ public class Grab : MonoBehaviour
             if (puzzleInteractable.GetComponent<InteractiveObject>()) puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
             if (puzzleInteractable.GetComponent<Lights>()) puzzleInteractable.GetComponent<Lights>().SendSignal();
         }
-         else if (Input.GetKeyDown(KeyCode.E) && pillar)
+         else if (Input.GetKeyDown(KeyCode.E) && pillar && Player.instance.hasDynamite)
         {
             P_script.Plant();
         }

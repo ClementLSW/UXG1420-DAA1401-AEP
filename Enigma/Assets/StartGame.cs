@@ -21,7 +21,7 @@ public class StartGame : MonoBehaviour
         //_GameManager.instance.SwitchState(1);
     }
     private IEnumerator loadTut() {
-        float t = 1.0f;
+        float t = 2.0f;
         float i = 0.0f;
 
         while (i < t) {

@@ -28,7 +28,7 @@ public class _GameManager : MonoBehaviour
         }
     }
 
-    public GameObject player, deathMenu, mainMenu, pauseMenu;
+    public GameObject player, deathMenu, mainMenu, pauseMenu, credits;
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -82,8 +82,18 @@ public class _GameManager : MonoBehaviour
             Player.instance.isAlive = true;
         }
 
-        if(scene.name == "Tutorial") StartCoroutine(CutsceneManager.instance.PlayCutscene(0));
-        if(scene.name == "Level 1")  StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
+        if (scene.name == "Tutorial"){
+            StartCoroutine(CutsceneManager.instance.PlayCutscene(0)); 
+        }else if (scene.name == "Level 1"){
+            StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
+        }
+        else if (scene.name != "Main Menu"){
+            Debug.Log("BG Fade");
+            StartCoroutine(CutsceneBG.instance.FadeOutImage());
+        }
+        else {
+            Destroy(Player.instance.gameObject);
+        }
     }
 
     public void Death(int deathType) {
@@ -103,6 +113,6 @@ public class _GameManager : MonoBehaviour
         deathMenu.GetComponent<DeathManager>().renderDeathSprite(deathType);
 
         // Destroy whatever player is holding
-        player.GetComponent<Grab>().DestroyHeldItem();
+        Player.instance.GetComponent<Grab>().DestroyHeldItem();
     }
 }
