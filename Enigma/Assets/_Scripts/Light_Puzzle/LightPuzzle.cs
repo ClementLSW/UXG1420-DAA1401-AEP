@@ -8,6 +8,8 @@ public class LightPuzzle : MonoBehaviour
     [SerializeField] private int lightsOn;
     private Lights[] lights;
 
+    Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +17,13 @@ public class LightPuzzle : MonoBehaviour
         foreach(Lights light in lights) {
             if (light.Lit) lightsOn++;
         }
+        cam = Camera.main;
     }
 
     public void Increment() {
         lightsOn++;
         if (lightsOn >= 5) {
+            cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
             door.Open();
             foreach(Lights light in lights) {
                 Destroy(light.GetComponent<BoxCollider2D>());
