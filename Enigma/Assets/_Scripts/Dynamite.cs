@@ -1,36 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dynamite : MonoBehaviour
 {
-    public Renderer DynamiteRender;
+    [SerializeField] private SpriteRenderer DynamiteRender;
     [SerializeField] private ParticleSystem explodingParticles = default;
     [SerializeField] private ParticleSystem assistingParticles = default;
-    public Animator animator;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Sprite dynamiteSprite;
+    [SerializeField] private GameObject pillar;
+    private float t = 5;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        DynamiteRender = GetComponent<Renderer>();
-        DynamiteRender.enabled = false;
-        animator = GetComponent<Animator>();
-    }
-
-    public void Explode()
+    public void PlantDynamite()
     {
         Debug.Log("Bomb has been planted");
-        DynamiteRender.enabled = true;
+        DynamiteRender.sprite = dynamiteSprite;
         StartCoroutine(CountdownTimer());
     }
 
     IEnumerator CountdownTimer()
     {
         Debug.Log("Time start");
-        yield return new WaitForSeconds(5);
+        while (t > 0) {
+            t -= Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("Time End");
+        Detonate();
+        //DynamiteRender.enabled = false;
+    }
+
+    private void Detonate() {
+        Debug.Log("Detonate!");
         explodingParticles.Play();
         assistingParticles.Play();
-        Debug.Log("Time End");
-        DynamiteRender.enabled = false;
+        animator.SetTrigger("Explode");
+        Destroy(pillar);
+        //yield return new WaitForSeconds(0.5f);
+        DynamiteRender.sprite = null;
+
     }
 }

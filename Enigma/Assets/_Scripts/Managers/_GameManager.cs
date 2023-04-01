@@ -2,33 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class _GameManager : MonoBehaviour
-{
+public class _GameManager : MonoBehaviour {
+
+    // ========== STATIC VARIABLES ========== //
     public static _GameManager instance { get; set; }
     public static _GameManager GetInstance() {
         return instance;
     }
     public static bool isPaused { get; private set; }
+    public static bool isCutscene { get; set; }
+    public static bool cutscenePlayed { get; set; }
 
+    // ========== SERIALIZED MEMBER VARIABLES ========== //
+    [Header("Level Indicator Variables\n")]
+    [SerializeField] public Image m_levelIndicator;
+    [SerializeField] public Sprite[] m_levelIdicatorSprite;
+
+    // ========== PUBLIC MEMBER VARIABLES ========== //
+    [Header("Game Manager Variables\n")]
+    public GameObject player;
+    public GameObject deathMenu;
+    public GameObject mainMenu;
+    public GameObject pauseMenu;
+    public GameObject credits;
+    
     public void Awake() {
-        if(instance != null) {
+        if (instance != null) {
             Destroy(gameObject);
         }
         else {
             instance = this;
             isPaused = false;
+            isCutscene = false;
+            cutscenePlayed = false;
             DontDestroyOnLoad(gameObject);
         }
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             togglePause();
         }
     }
 
-    public GameObject player, deathMenu, mainMenu, pauseMenu, credits;
+    
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -43,7 +62,7 @@ public class _GameManager : MonoBehaviour
 
 
     public void SwitchState(int state) {
-        if(Player.instance != null) Player.instance.GetComponent<Grab>().DestroyHeldItem();
+        if (Player.instance != null) Player.instance.GetComponent<Grab>().DestroyHeldItem();
         switch (state) {
             case 0:
                 SceneManager.LoadScene("Main Menu");
@@ -78,21 +97,40 @@ public class _GameManager : MonoBehaviour
             deathMenu.SetActive(false);
         }
         //player = GameObject.FindWithTag("Player");
-        if(Player.instance != null) {
+        if (Player.instance != null) {
             Player.instance.isAlive = true;
         }
 
-        if (scene.name == "Tutorial"){
-            StartCoroutine(CutsceneManager.instance.PlayCutscene(0)); 
-        }else if (scene.name == "Level 1"){
-            StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
+        if (scene.name == "Tutorial") {
+            Player.instance.isControllable = false;
+            StartCoroutine(CutsceneManager.instance.PlayCutscene(0));
+            m_levelIndicator.sprite = m_levelIdicatorSprite[0];
         }
-        else if (scene.name != "Main Menu"){
+        else if (scene.name == "Level 1") {
+            if (cutscenePlayed == false) {
+                Player.instance.isControllable = false;
+                StartCoroutine(CutsceneManager.instance.PlayCutscene(2));
+                cutscenePlayed = true;
+            }
+            else {
+                StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            }
+            m_levelIndicator.sprite = m_levelIdicatorSprite[1];
+        }else if(scene.name == "Level 2") {
+            StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            m_levelIndicator.sprite = m_levelIdicatorSprite[2];
+        }
+        else if (scene.name == "Level 3") {
+            StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            m_levelIndicator.sprite = m_levelIdicatorSprite[3];
+        }
+        else if (scene.name != "Main Menu") {
             Debug.Log("BG Fade");
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            cutscenePlayed = false;
         }
         else {
-            Destroy(Player.instance.gameObject);
+            if(Player.instance != null) Destroy(Player.instance.gameObject);
         }
     }
 
@@ -102,11 +140,11 @@ public class _GameManager : MonoBehaviour
          *  0   -   Player fell on spikes
          *  1   -   Player fell from height
          *  2   -   Player crushed by boulder
+         *  3   -   Player crushed by falling spikes
          */
 
         // Set player alive status to dead;
         Player.instance.isAlive = false;
-        //player.GetComponent<Player>().isAlive = false;
 
         // Prepare death Menu
         deathMenu.SetActive(true);
@@ -114,5 +152,15 @@ public class _GameManager : MonoBehaviour
 
         // Destroy whatever player is holding
         Player.instance.GetComponent<Grab>().DestroyHeldItem();
+    }
+
+    public void ExitGame() {
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

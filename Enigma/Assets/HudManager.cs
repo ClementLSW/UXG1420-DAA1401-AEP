@@ -5,6 +5,7 @@ using UnityEngine;
 public class HudManager : MonoBehaviour
 {
     [SerializeField] private GameObject keySprite;
+    [SerializeField] private GameObject dynamiteSprite;
     public static HudManager instance { get; set; }
     public static HudManager GetInstance() {
         return instance;
@@ -26,5 +27,13 @@ public class HudManager : MonoBehaviour
 
     public void hideKeyHUD() {
         keySprite.SetActive(false);
+    }
+
+    public void showDynamiteHUD() {
+        dynamiteSprite.SetActive(true);
+    }
+
+    public void hideDynamiteHUD() {
+        dynamiteSprite.SetActive(false);
     }
 }

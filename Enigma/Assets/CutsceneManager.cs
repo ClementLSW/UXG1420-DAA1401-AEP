@@ -44,6 +44,7 @@ public class CutsceneManager : MonoBehaviour
         // Play cutscene sequence
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().PlayCutscene());
         skippable = true;
+        
     }
 
     public IEnumerator PlayNextCutscene(int old_id, int id) {

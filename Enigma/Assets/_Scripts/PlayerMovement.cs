@@ -99,4 +99,8 @@ public class PlayerMovement : MonoBehaviour {
             animator.ResetTrigger("Jump");
         }
     }
+
+    public void ResetAnimator() {
+        animator.Play("Player_Idle");
+    }
 }

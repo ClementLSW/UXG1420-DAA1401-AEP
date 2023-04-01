@@ -13,6 +13,7 @@ public class end : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        AudioManager.instance.sfxSource.Stop();
         var currentScene = SceneManager.GetActiveScene();
         var currentSceneName = currentScene.name;
         int sceneID = 0;

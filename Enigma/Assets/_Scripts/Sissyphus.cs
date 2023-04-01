@@ -13,9 +13,12 @@ public class Sissyphus : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("Rock Spawn");
-        Instantiate(rockPrefab, rockSpawn.position, Quaternion.identity);
-        cam.GetComponent<CameraShake>().StartShake(10.0f, 0.15f);
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "Player") {
+            Debug.Log("Rock Spawn");
+            Instantiate(rockPrefab, rockSpawn.position, Quaternion.identity);
+            cam.GetComponent<CameraShake>().StartShake(10.0f, 0.15f);
+            Destroy(gameObject);
+        }
+        
     }
 }
