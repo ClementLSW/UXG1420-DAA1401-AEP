@@ -20,12 +20,18 @@ public class _GameManager : MonoBehaviour {
     [SerializeField] public Image m_levelIndicator;
     [SerializeField] public Sprite[] m_levelIdicatorSprite;
 
+    [Header("Victory Screen Variables\n")]
+    [SerializeField] public Image m_victoryImage;
+    [SerializeField] public Text m_victoryText;
+    [SerializeField] public Sprite[] m_victorySprites;
+
     // ========== PUBLIC MEMBER VARIABLES ========== //
     [Header("Game Manager Variables\n")]
     public GameObject player;
     public GameObject deathMenu;
     public GameObject mainMenu;
     public GameObject pauseMenu;
+    public GameObject victoryMenu;
     public GameObject credits;
     
     public void Awake() {
@@ -46,8 +52,6 @@ public class _GameManager : MonoBehaviour {
             togglePause();
         }
     }
-
-    
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -152,6 +156,24 @@ public class _GameManager : MonoBehaviour {
 
         // Destroy whatever player is holding
         Player.instance.GetComponent<Grab>().DestroyHeldItem();
+    }
+
+    public void Victory(bool idol) {
+        if (idol) {
+            m_victoryImage.sprite = m_victorySprites[1];
+            m_victoryText.text = "Finally, It's mine!";
+        }
+        else {
+            m_victoryImage.sprite = m_victorySprites[0];
+            m_victoryText.text = "I made it out!";
+        }
+
+        // Turn on Victory Screen
+        victoryMenu.SetActive(true);
+    }
+
+    public void ToggleCredits() {
+        credits.SetActive(!credits.activeInHierarchy);
     }
 
     public void ExitGame() {
