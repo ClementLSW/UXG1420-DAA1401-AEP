@@ -58,10 +58,13 @@ public class _GameManager : MonoBehaviour {
     }
 
     public void togglePause() {
-        isPaused = !isPaused;
-        pauseMenu.SetActive(isPaused);
-        Time.timeScale = isPaused ? 0f : 1f;
-        Debug.Log(isPaused);
+        if(isCutscene == false) {
+            isPaused = !isPaused;
+            pauseMenu.SetActive(isPaused);
+            Time.timeScale = isPaused ? 0f : 1f;
+            Debug.Log(isPaused);
+        }
+        
     }
 
 
@@ -135,6 +138,9 @@ public class _GameManager : MonoBehaviour {
         }
         else {
             if(Player.instance != null) Destroy(Player.instance.gameObject);
+            if(CutsceneBG.instance.bg.alpha > 0) {
+                StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            }
         }
     }
 
@@ -159,7 +165,7 @@ public class _GameManager : MonoBehaviour {
     }
 
     public void Victory(bool idol) {
-        if (idol) {
+        if (idol == true) {
             m_victoryImage.sprite = m_victorySprites[1];
             m_victoryText.text = "Finally, It's mine!";
         }

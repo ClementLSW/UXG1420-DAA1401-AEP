@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  final: 0
   secret: 1
 --- !u!61 &574025887
 BoxCollider2D:
@@ -6140,6 +6141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  final: 1
   secret: 0
 --- !u!61 &6349985879647351329
 BoxCollider2D:

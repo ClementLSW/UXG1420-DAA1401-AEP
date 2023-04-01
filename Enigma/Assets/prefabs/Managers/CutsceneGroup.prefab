@@ -702,7 +702,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &9047140986380004679
 MonoBehaviour:
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd5fcafa28c244f8ad84cdde94a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 1.5
+  fadeTime: 1
   delayTime: 0.5
   panels:
   - {fileID: 9047140987700916732}
@@ -1554,7 +1554,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &9047140986935699820
 MonoBehaviour:
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd5fcafa28c244f8ad84cdde94a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 1.5
+  fadeTime: 1
   delayTime: 0.5
   panels:
   - {fileID: 9047140986710176221}
@@ -1682,7 +1682,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &9047140986971584163
 MonoBehaviour:
@@ -1736,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd5fcafa28c244f8ad84cdde94a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 1.5
+  fadeTime: 1
   delayTime: 0.5
   panels:
   - {fileID: 9047140987596797299}
@@ -2076,7 +2076,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &9047140987184841481
 MonoBehaviour:
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd5fcafa28c244f8ad84cdde94a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 1.5
+  fadeTime: 1
   delayTime: 0.5
   panels:
   - {fileID: 9047140987258362117}
@@ -3129,7 +3129,6 @@ GameObject:
   - component: {fileID: 9047140987859509895}
   - component: {fileID: 9047140987859509894}
   - component: {fileID: 9047140987859509893}
-  - component: {fileID: 1055779096011392795}
   m_Layer: 5
   m_Name: CutsceneBG
   m_TagString: Untagged
@@ -3177,7 +3176,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &9047140987859509894
 MonoBehaviour:
@@ -3219,20 +3218,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1055779096011392795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047140987859509891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8e8f880c3f4b14e96b0fc58e640bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 1
-  bg: {fileID: 9047140986171579252}
 --- !u!1 &9047140988058352849
 GameObject:
   m_ObjectHideFlags: 0
@@ -3298,7 +3283,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &9047140988058352852
 MonoBehaviour:
@@ -3352,7 +3337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd5fcafa28c244f8ad84cdde94a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 1.5
+  fadeTime: 1
   delayTime: 0.5
   panels:
   - {fileID: 9047140986606622690}
