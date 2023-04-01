@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class end : MonoBehaviour
 {
     [SerializeField] _GameManager gm;
+    [SerializeField] bool final = false;
     [SerializeField] bool secret = false;
 
     private void Awake() {
@@ -13,24 +14,31 @@ public class end : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        AudioManager.instance.sfxSource.Stop();
         var currentScene = SceneManager.GetActiveScene();
         var currentSceneName = currentScene.name;
         int sceneID = 0;
         if (collision.gameObject.tag == "Player")
         {
-            
-            if (secret) {
-                sceneID = 5;
+            if (final) {
+                Player.instance.isControllable = false;
+                _GameManager.instance.Victory(secret);
             }
+            else {
+                if (secret) {
+                    sceneID = 5;
+                }
 
-            if (currentSceneName == "Tutorial") {sceneID = 2;}
-            else if (currentSceneName == "Level 1") { sceneID = 3; }
-            else if (currentSceneName == "Level 2") { sceneID = 4; }
-            else if (currentSceneName == "Level 3") { sceneID = 6; }
-            else if (currentSceneName == "Alpha") { sceneID = 1; }
-            else { Debug.Log("ERROR: end.cs"); }
-            StartCoroutine(CutsceneBG.instance.FadeInImage());
-            StartCoroutine(loadScene(sceneID));
+                if (currentSceneName == "Tutorial") {sceneID = 2;}
+                else if (currentSceneName == "Level 1") { sceneID = 3; }
+                else if (currentSceneName == "Level 2") { sceneID = 4; }
+                else if (currentSceneName == "Level 3") { sceneID = 6; }
+                else if (currentSceneName == "Alpha") { sceneID = 1; }
+                else { Debug.Log("ERROR: end.cs"); }
+                StartCoroutine(CutsceneBG.instance.FadeInImage());
+                StartCoroutine(loadScene(sceneID));
+            }
+            
 
             
         }

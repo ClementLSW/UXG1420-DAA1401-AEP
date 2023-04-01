@@ -94,9 +94,13 @@ public class PlayerMovement : MonoBehaviour {
     //}
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Ground") {
+        if (collision.gameObject.tag == "Ground" && collision.transform.position.y < transform.position.y) {
             isGrounded = true;
             animator.ResetTrigger("Jump");
         }
+    }
+
+    public void ResetAnimator() {
+        animator.Play("Player_Idle");
     }
 }

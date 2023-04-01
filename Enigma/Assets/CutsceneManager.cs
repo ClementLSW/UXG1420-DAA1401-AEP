@@ -20,6 +20,8 @@ public class CutsceneManager : MonoBehaviour
             instance = this;
         }
 
+        _GameManager gm = _GameManager.instance;
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,12 +40,14 @@ public class CutsceneManager : MonoBehaviour
     }
 
     public IEnumerator PlayCutscene(int id) {
+        _GameManager.isCutscene = true;
         currentCutscene = id;
         skippable = false;
         Debug.Log("Playing cutscene " + (id+1));
         // Play cutscene sequence
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().PlayCutscene());
         skippable = true;
+        
     }
 
     public IEnumerator PlayNextCutscene(int old_id, int id) {
@@ -63,5 +67,6 @@ public class CutsceneManager : MonoBehaviour
         yield return StartCoroutine(Cutscenes[id].GetComponent<Cutscene>().EndCutscene());
 
         yield return StartCoroutine(CutsceneBG.instance.FadeOutImage());
+        _GameManager.isCutscene = false;
     }
 }
