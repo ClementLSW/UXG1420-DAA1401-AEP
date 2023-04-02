@@ -20,13 +20,16 @@ public class DeathManager : MonoBehaviour
 
         switch (op) {
             case 0:
-                deathText.text = "You fell onto some spikes";
+                deathText.text = "You fell onto some spikes!";
                 break;
             case 1:
-                deathText.text = "You fell to your death";
+                deathText.text = "You fell to your death!";
                 break;
             case 2:
-                deathText.text = "You got crushed by a boulder";
+                deathText.text = "You got crushed by a boulder!";
+                break;
+            case 3:
+                deathText.text = "Look out for falling spikes!";
                 break;
             default:
                 deathText.text = "You died!";

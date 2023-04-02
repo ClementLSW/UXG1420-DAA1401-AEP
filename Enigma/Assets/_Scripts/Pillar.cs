@@ -5,8 +5,8 @@ using UnityEngine;
 public class Pillar : MonoBehaviour
 {
     public Renderer PillarRender;
-    public Dynamite D_script;
-    public Explosion E_script;
+    public Dynamite dynamite;
+    //public Explosion E_script;
     private AudioManager audioManager;
     bool interacted = false;
     [SerializeField] private AudioClip explodeClip;
@@ -25,9 +25,9 @@ public class Pillar : MonoBehaviour
         if (interacted == false)
         {
             audioManager.PlaySfx(explodeClip);
-            D_script.Explode();
-            E_script.Explode();
-            StartCoroutine(Delay());
+            dynamite.PlantDynamite();
+            //E_script.Explode();
+            //StartCoroutine(Delay());
             interacted = true;
         }
     }
@@ -41,11 +41,11 @@ public class Pillar : MonoBehaviour
     //    }
     //}
 
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(5);
-        PillarRender.enabled = false;
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        Destroy(gameObject);
-    }
+    //IEnumerator Delay()
+    //{
+    //    yield return new WaitForSeconds(5);
+    //    PillarRender.enabled = false;
+    //    this.GetComponent<BoxCollider2D>().enabled = false;
+    //    Destroy(gameObject);
+    //}
 }

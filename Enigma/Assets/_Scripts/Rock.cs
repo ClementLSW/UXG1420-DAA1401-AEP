@@ -6,15 +6,17 @@ public class Rock : MonoBehaviour
 {
     private _GameManager gm;
     private AudioManager audioManager;
+    private float rockForce = 15.0f;
     [SerializeField] float duration = 20.0f;
     [SerializeField] private AudioClip rollingClip;
     [SerializeField] private AudioClip breakClip;
 
 
     private void Start() {
-        gm = FindObjectOfType<_GameManager>();
+        gm = _GameManager.instance;
         audioManager = AudioManager.instance;
         audioManager.PlaySfx(rollingClip);
+        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-rockForce, 0);
     }
 
     private void Update() {
@@ -25,13 +27,21 @@ public class Rock : MonoBehaviour
             audioManager.PlaySfx(breakClip);
             Destroy(gameObject);
         }
+
+        if (!Player.instance.isAlive) {
+            audioManager.StopSfx(rollingClip);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.name == "Player") {
-            Debug.Log("SQUASH");
+            audioManager.StopSfx(rollingClip);
+            audioManager.PlaySfx(breakClip);
+            Destroy(gameObject);
+
+            // Call Death function in Game Manager
             gm.Death(2);
-            //gm.LoadAlpha();     // TODO: [ALPHA] Remove this after Alpha and reinstate gm.Death(0)
         }
     }
 }
