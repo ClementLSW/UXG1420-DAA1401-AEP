@@ -8,7 +8,7 @@ public class CutsceneBG : MonoBehaviour
     public static CutsceneBG instance { get; private set; }
 
     public float fadeTime = 1f;
-    [SerializeField] private CanvasGroup bg;
+    [SerializeField] public CanvasGroup bg;
 
     private void Awake() {
         if (instance == null) {

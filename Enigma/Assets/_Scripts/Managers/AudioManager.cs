@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -60,18 +61,13 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
     }
 
-    // public void SetMasterVolume(float volume)
-    // {
-    //     audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
-    // }
-
-    public void SetBGMVolume(float volume)
+    public void SetBGMVolume(Slider volume)
     {
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume.value) * 20);
     }
 
-    public void SetSFXVolume(float volume)
+    public void SetSFXVolume(Slider volume)
     {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume.value) * 20);
     }
 }

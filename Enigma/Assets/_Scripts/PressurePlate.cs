@@ -28,7 +28,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
 
     void Start(){
         audioManager = AudioManager.instance;
-        sinkDepth = GetComponent<SpriteRenderer>().bounds.size.y;
+        sinkDepth = 0.5f;
         sinkVector = new Vector3(0, sinkDepth, 0);
         sinkDest = transform.position - sinkVector;
         Debug.Log(sinkDest);

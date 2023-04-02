@@ -105,13 +105,15 @@ public class Grab : MonoBehaviour
             }      
         }
 
-         if(Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
+        if (Input.GetKeyDown(KeyCode.E) && puzzleInteractable) {
             if (puzzleInteractable.GetComponent<InteractiveObject>()) puzzleInteractable.GetComponent<InteractiveObject>().SendSignal();
             if (puzzleInteractable.GetComponent<Lights>()) puzzleInteractable.GetComponent<Lights>().SendSignal();
         }
-         else if (Input.GetKeyDown(KeyCode.E) && pillar && Player.instance.hasDynamite)
-        {
-            P_script.Plant();
+        else if (SceneManager.GetActiveScene().name == "Tutorial") {
+            if (Input.GetKeyDown(KeyCode.E) && Vector3.Distance(pillar.transform.position, Player.instance.gameObject.transform.position) < 5 && Player.instance.hasDynamite) {
+                HudManager.instance.hideDynamiteHUD();
+                P_script.Plant();
+            }
         }
     }
 
