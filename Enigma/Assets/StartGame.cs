@@ -14,6 +14,7 @@ public class StartGame : MonoBehaviour
     }
 
     private void startGame() {
+        btn.interactable = false;
         AudioManager.instance.StopBGM(BGM);
         AudioManager.instance.PlaySfx(SFX);
         StartCoroutine(CutsceneBG.instance.FadeInImage());

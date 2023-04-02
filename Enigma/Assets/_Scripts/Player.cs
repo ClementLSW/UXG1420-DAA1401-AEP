@@ -34,6 +34,6 @@ public class Player : MonoBehaviour
     }
 
     public void PlayJump() {
-        audioManager.PlayPlayerSfx(jumpClip);
+        audioManager.PlaySfx(jumpClip);
     }
 }

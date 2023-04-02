@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource playerSource;
     public AudioMixer audioMixer;
 
+    public List<AudioSource> sfxsourcepool;
+
     public AudioClip[] bgmList;
 
     void Awake()
@@ -31,22 +33,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySfx(AudioClip clip)
+    public AudioSource PlaySfx(AudioClip clip)
     {
-        sfxSource.clip = clip;
-        sfxSource.Play();
+        // Very non-performant audio source pooling
+        foreach (AudioSource src in  sfxsourcepool) {
+            if (!src.isPlaying) {
+                src.clip = clip;
+                src.Play();
+                return src;
+            }
+        }
+        return null;
     }
 
-    public void PlayPlayerSfx(AudioClip clip)
+    public void StopSfx(AudioSource src)
     {
-        playerSource.clip = clip;
-        playerSource.Play();
-    }
-
-    public void StopSfx(AudioClip clip)
-    {
-        sfxSource.clip = clip;
-        sfxSource.Stop();
+        src.Stop();
+        src.clip = null;
+        
     }
 
     public void PlayBGM(AudioClip clip, bool isLoop = true){

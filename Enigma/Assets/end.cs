@@ -27,13 +27,13 @@ public class end : MonoBehaviour
             else {
                 if (secret) {
                     sceneID = 5;
+                    StartCoroutine(CutsceneBG.instance.FadeInImage());
+                    StartCoroutine(loadScene(sceneID));
                 }
 
                 if (currentSceneName == "Tutorial") {sceneID = 2;}
                 else if (currentSceneName == "Level 1") { sceneID = 3; }
                 else if (currentSceneName == "Level 2") { sceneID = 4; }
-                else if (currentSceneName == "Level 3") { sceneID = 6; }
-                else if (currentSceneName == "Alpha") { sceneID = 1; }
                 else { Debug.Log("ERROR: end.cs"); }
                 StartCoroutine(CutsceneBG.instance.FadeInImage());
                 StartCoroutine(loadScene(sceneID));

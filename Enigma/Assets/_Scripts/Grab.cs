@@ -39,7 +39,7 @@ public class Grab : MonoBehaviour
                 pm.animator.SetTrigger("Pickup");
                 pm.animator.SetBool("HoldItem", true);
                 pm.animator.ResetTrigger("SetDown");
-                audioManager.PlayPlayerSfx(grabClip);
+                audioManager.PlaySfx(grabClip);
                 heldItem = selectedObj;
                 Destroy(heldItem.GetComponent<Rigidbody2D>());
                 heldItem.transform.position = grabPos.position;

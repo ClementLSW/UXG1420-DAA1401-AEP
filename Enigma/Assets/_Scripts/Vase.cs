@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AudioManager;
 
 public class Vase : MonoBehaviour
 {
@@ -9,6 +8,7 @@ public class Vase : MonoBehaviour
     public float cap = 5.0f;
     public float secToFill = 5.0f;
     private AudioManager audioManager;
+    private AudioSource l_src;
     private SpriteRenderer sr;
     [SerializeField] private Sprite vase_filled;
     //[SerializeField] private GameObject mask;
@@ -31,21 +31,21 @@ public class Vase : MonoBehaviour
 
         if(secToFill <= 0) {
             sr.sprite = vase_filled;
-            audioManager.StopSfx(fillClip);
+            audioManager.StopSfx(l_src);
             filled = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "water") {
-            audioManager.PlaySfx(fillClip);
+            l_src = audioManager.PlaySfx(fillClip);
             startFill = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.tag == "water") {
-            audioManager.StopSfx(fillClip);
+            audioManager.StopSfx(l_src);
             startFill = false;
         }
     }

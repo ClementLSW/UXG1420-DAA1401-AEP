@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class _GameManager : MonoBehaviour {
 
     [Header("Victory Screen Variables\n")]
     [SerializeField] public Image m_victoryImage;
-    [SerializeField] public Text m_victoryText;
+    [SerializeField] public TMP_Text m_victoryText;
     [SerializeField] public Sprite[] m_victorySprites;
 
     // ========== PUBLIC MEMBER VARIABLES ========== //
@@ -39,6 +40,7 @@ public class _GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
         else {
+            Screen.SetResolution(1920, 1080, false);
             instance = this;
             isPaused = false;
             isCutscene = false;
@@ -67,6 +69,21 @@ public class _GameManager : MonoBehaviour {
         
     }
 
+    public void Respawn() {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if(currentSceneName =="Level 1") {
+            SwitchState(2);
+        }else if(currentSceneName == "Level 2") {
+            SwitchState(3);
+        }else if( currentSceneName == "Level 3") {
+            SwitchState(4);
+        }else if(currentSceneName == "Secret") {
+            SwitchState(5);
+        }
+        else {
+            SwitchState(0);
+        }
+    }
 
     public void SwitchState(int state) {
         if (Player.instance != null) Player.instance.GetComponent<Grab>().DestroyHeldItem();
@@ -112,6 +129,7 @@ public class _GameManager : MonoBehaviour {
             Player.instance.isControllable = false;
             StartCoroutine(CutsceneManager.instance.PlayCutscene(0));
             m_levelIndicator.sprite = m_levelIdicatorSprite[0];
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else if (scene.name == "Level 1") {
             if (cutscenePlayed == false) {
@@ -123,24 +141,30 @@ public class _GameManager : MonoBehaviour {
                 StartCoroutine(CutsceneBG.instance.FadeOutImage());
             }
             m_levelIndicator.sprite = m_levelIdicatorSprite[1];
-        }else if(scene.name == "Level 2") {
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
+        }
+        else if(scene.name == "Level 2") {
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
             m_levelIndicator.sprite = m_levelIdicatorSprite[2];
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else if (scene.name == "Level 3") {
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
             m_levelIndicator.sprite = m_levelIdicatorSprite[3];
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else if (scene.name != "Main Menu") {
             Debug.Log("BG Fade");
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
             cutscenePlayed = false;
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else {
             if(Player.instance != null) Destroy(Player.instance.gameObject);
             if(CutsceneBG.instance.bg.alpha > 0) {
                 StartCoroutine(CutsceneBG.instance.FadeOutImage());
             }
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[1]);
         }
     }
 
