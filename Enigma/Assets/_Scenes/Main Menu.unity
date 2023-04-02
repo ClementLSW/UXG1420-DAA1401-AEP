@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &31583971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 825007230504891454, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+  m_PrefabInstance: {fileID: 3664725198182114212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181562471
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +268,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181562471}
   m_CullTransparentMesh: 1
+--- !u!114 &206151303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6346735243071123271, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+  m_PrefabInstance: {fileID: 3664725198182114212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &358353581
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +527,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9047140987859509891, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
   m_PrefabInstance: {fileID: 9047140987466642584}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &543027561
+--- !u!114 &543027556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -655,6 +677,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &761249402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6877987595136455342, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+  m_PrefabInstance: {fileID: 3664725198182114212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!225 &843826027 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 9047140986171579252, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
@@ -1604,6 +1631,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4199650721545182867}
     - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
+      propertyPath: victoryMenu
+      value: 
+      objectReference: {fileID: 761249402}
+    - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
+      propertyPath: m_victoryText
+      value: 
+      objectReference: {fileID: 206151303}
+    - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
+      propertyPath: m_victoryImage
+      value: 
+      objectReference: {fileID: 31583971}
+    - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
       propertyPath: m_levelIndicator
       value: 
       objectReference: {fileID: 1207134121}
@@ -1797,9 +1836,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1937029266}
     - target: {fileID: 6306349962790087454, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306349962790087454, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1937029266}
+    - target: {fileID: 6306349962790087454, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 6877987595136455342, guid: fec04332587de9a46a6ec69bfa7c0154, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1847,6 +1894,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9047140986742769088, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
+      propertyPath: skip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea1de5d5a2f8dc841ac21817e3716b75, type: 3}
     - target: {fileID: 9047140986742769089, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
       propertyPath: m_RootOrder
       value: 2
