@@ -29,9 +29,10 @@ public class Vase : MonoBehaviour
             //mask.transform.position += new Vector3(0, Time.deltaTime * 2 / 5.0f , 0);
         }
 
-        if(secToFill <= 0) {
+        if(secToFill <= 0 && !filled) {
             sr.sprite = vase_filled;
             audioManager.StopSfx(l_src);
+            l_src = null;
             filled = true;
         }
     }
@@ -46,6 +47,7 @@ public class Vase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.tag == "water") {
             audioManager.StopSfx(l_src);
+            l_src = null;
             startFill = false;
         }
     }
