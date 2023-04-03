@@ -522,25 +522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383905913}
   m_CullTransparentMesh: 1
---- !u!1 &543027555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9047140987859509891, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
-  m_PrefabInstance: {fileID: 9047140987466642584}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &543027556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543027555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8e8f880c3f4b14e96b0fc58e640bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 1
-  bg: {fileID: 843826027}
 --- !u!1 &676027838
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +668,25 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 9047140986171579252, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
   m_PrefabInstance: {fileID: 9047140987466642584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &986182248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9047140987859509891, guid: 01e977d40478a8a4a9a223e59ab2e8a2, type: 3}
+  m_PrefabInstance: {fileID: 9047140987466642584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &986182250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986182248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8e8f880c3f4b14e96b0fc58e640bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1
+  bg: {fileID: 843826027}
 --- !u!1 &1019723549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,7 +1660,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 180595355e5e38a4f9887bca16e79a16, type: 3}
     - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
       propertyPath: m_levelIdicatorSprite.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
       propertyPath: m_levelIdicatorSprite.Array.data[0]
@@ -1678,6 +1678,10 @@ PrefabInstance:
       propertyPath: m_levelIdicatorSprite.Array.data[3]
       value: 
       objectReference: {fileID: 21300000, guid: a1b72ba96092be14f8a4f38a981127de, type: 3}
+    - target: {fileID: 2661668020272195711, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
+      propertyPath: m_levelIdicatorSprite.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3829927e06055cc4ca39503be7fb8f03, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b864b67743e8f2b40ba47eaae7cc78f9, type: 3}
 --- !u!1001 &3664725198182114212
