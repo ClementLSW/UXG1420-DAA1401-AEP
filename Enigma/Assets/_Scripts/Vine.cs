@@ -10,6 +10,7 @@ public class Vine : MonoBehaviour
     private bool startToLight = false;
     private SpriteRenderer sr;
     private AudioManager am;
+    private AudioSource l_src;
     [SerializeField] private AudioClip burnClip, openClip;
     [SerializeField] GameObject trapdoor;
     [SerializeField] Sprite burning, burnt;
@@ -27,7 +28,7 @@ public class Vine : MonoBehaviour
             if (startToLight) {
                 secsTillLit -= Time.deltaTime;
                 Debug.Log("Secs till lit: " + secsTillLit);
-                am.PlaySfx(burnClip);
+                //l_src = am.PlaySfx(burnClip);
             }
             if (secsTillLit <= 0) {
                 lit = true;
@@ -42,11 +43,11 @@ public class Vine : MonoBehaviour
                 Debug.Log("Secs till lit: " + secsTillBurnt);
             }
             else {
-                am.StopSfx(burnClip);
-                am.PlaySfx(openClip);
+                am.StopSfx(l_src);
+                l_src = am.PlaySfx(openClip);
                 trapdoor.GetComponent<TrapDoor>().Open();
                 sr.sprite = burnt;
-                Destroy(GetComponent<Vine>());
+                Destroy(GetComponent<Vine>().gameObject);
             }
         }
     }
@@ -55,7 +56,7 @@ public class Vine : MonoBehaviour
         if (!lit) {
             if(collision.GetComponent<Torch>() && collision.GetComponent<Torch>().lit) {
                 startToLight = true;
-                am.PlaySfx(burnClip);
+                l_src = am.PlaySfx(burnClip);
             }
         }
     }
@@ -63,6 +64,7 @@ public class Vine : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
         if(!lit && secsTillLit > 0) {
             startToLight = false;
+            am.StopSfx(l_src);
             secsTillLit = 2.0f;
         }
     }

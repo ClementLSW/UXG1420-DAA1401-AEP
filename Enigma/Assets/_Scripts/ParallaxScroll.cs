@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class ParallaxScroll : MonoBehaviour
 {
-
-    private float scrollSpeed = 0.2f;
-    private float tileSizeX;
-    private Camera camera;
+    private Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
-        tileSizeX = GetComponent<SpriteRenderer>().bounds.size.x;
-        camera = Camera.main;
+        //tileSizeX = GetComponent<SpriteRenderer>().bounds.size.x;
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -29,15 +26,15 @@ public class ParallaxScroll : MonoBehaviour
         //    transform.position += Vector3.left * tileSizeX * 2;
         //}
 
-        transform.position += Vector3.right * -Input.GetAxis("Horizontal") * scrollSpeed * Time.deltaTime;        // Handles X-Axis with Parallex
-        transform.position += Vector3.up * (camera.transform.position.y - transform.position.y);                    // Handles Y-Axis without Parallex
+        //transform.position += Vector3.right * -Input.GetAxis("Horizontal") * scrollSpeed * Time.deltaTime;        // Handles X-Axis with Parallex
+        transform.position += Vector3.up * (cam.transform.position.y - transform.position.y);                    // Handles Y-Axis without Parallex
         
-        if(transform.position.x - camera.transform.position.x < -tileSizeX) {
-            Debug.Log(gameObject.name + " Tile to the Right");
-            transform.position += Vector3.right * tileSizeX * 2;
-        }else if(transform.position.x - camera.transform.position.x > tileSizeX) {
-            Debug.Log(gameObject.name +  " Tile to the Left");
-            transform.position += Vector3.left * tileSizeX * 2;
-        }
+        //if(transform.position.x - camera.transform.position.x < -tileSizeX) {
+        //    Debug.Log(gameObject.name + " Tile to the Right");
+        //    transform.position += Vector3.right * tileSizeX * 2;
+        //}else if(transform.position.x - camera.transform.position.x > tileSizeX) {
+        //    Debug.Log(gameObject.name +  " Tile to the Left");
+        //    transform.position += Vector3.left * tileSizeX * 2;
+        //}
     }
 }

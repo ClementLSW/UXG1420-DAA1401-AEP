@@ -76,6 +76,19 @@ public class PressurePlate : MonoBehaviour, IAnchor
                 }
                 break;
             case plateType.YELLOW:
+                if (gameObject.GetComponent<Pot>().type == Pot.potType.YELLOW) {
+                    if (door) {
+                        door.GetComponent<Door>().Open();
+                        cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+                        GetComponent<BoxCollider2D>().enabled = false;
+                        sink = true;
+                        gameObject.layer = 0;
+                        gameObject.transform.SetParent(this.transform);
+                        item = gameObject;
+                        audioManager.PlaySfx(clip);
+                        return;
+                    }
+                }
                 break;
             case plateType.VASE:
                 if(gameObject.GetComponent<Vase>() && gameObject.GetComponent<Vase>().filled) {

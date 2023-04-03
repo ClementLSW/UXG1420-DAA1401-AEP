@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CutsceneManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] Cutscenes;
+    [SerializeField] AudioClip skip;
     public GameObject cutsceneBG;
     private int currentCutscene = -1;
     private bool skippable = false;
@@ -28,10 +29,12 @@ public class CutsceneManager : MonoBehaviour
     private void Update() {
         if((currentCutscene == 0 || currentCutscene == 2 || currentCutscene == 3) && skippable) {
             if(Input.GetButtonDown("Jump")){
+                AudioManager.instance.PlaySfx(skip);
                 StartCoroutine(PlayNextCutscene(currentCutscene, currentCutscene + 1));
             }
         }else if(currentCutscene >= 0 && skippable) {
             if (Input.GetButtonDown("Jump")) {
+                AudioManager.instance.PlaySfx(skip);
                 StartCoroutine(EndCutscene(currentCutscene));
                 Player.instance.isControllable = true;
                 currentCutscene = -1;
