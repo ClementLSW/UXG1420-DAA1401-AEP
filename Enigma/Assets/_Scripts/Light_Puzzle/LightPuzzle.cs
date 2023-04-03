@@ -23,18 +23,20 @@ public class LightPuzzle : MonoBehaviour
 
     public void Increment() {
         lightsOn++;
-        if (lightsOn >= 5) {
-            cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
-            AudioManager.instance.PlaySfx(doorOpen);
-            door.Open();
-            foreach(Lights light in lights) {
-                Destroy(light.GetComponent<BoxCollider2D>());
-            }
-        }
     }
 
     public void Decrement() {
         lightsOn--;
     }
 
+    public void Validate() {
+        if (lightsOn == 5) {
+            cam.GetComponent<CameraShake>().StartShake(1.5f, 0.05f);
+            AudioManager.instance.PlaySfx(doorOpen);
+            door.Open();
+            foreach (Lights light in lights) {
+                Destroy(light.GetComponent<BoxCollider2D>());
+            }
+        }
+    }
 }

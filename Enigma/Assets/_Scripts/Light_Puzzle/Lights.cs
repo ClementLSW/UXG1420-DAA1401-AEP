@@ -27,9 +27,10 @@ public class Lights : MonoBehaviour
     }
 
     public void SendSignal() {
-        this.toggle();
+        toggle();
         if(prev) prev.toggle();
         if(next) next.toggle();
+        lp.Validate();
     }
 
     private void toggle() {

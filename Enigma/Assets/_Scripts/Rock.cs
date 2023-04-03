@@ -7,7 +7,7 @@ public class Rock : MonoBehaviour
     private _GameManager gm;
     private AudioManager audioManager;
     private float rockForce = 15.0f;
-    [SerializeField] float duration = 20.0f;
+    [SerializeField] float duration = 15.0f;
     [SerializeField] private AudioClip rollingClip;
     [SerializeField] private AudioClip breakClip;
     AudioSource l_src = null, l_src_r;
@@ -27,6 +27,8 @@ public class Rock : MonoBehaviour
         }
         else {
             l_src = audioManager.PlaySfx(breakClip);
+            audioManager.StopSfx(l_src_r);
+            l_src_r = null;
             Destroy(gameObject);
         }
 

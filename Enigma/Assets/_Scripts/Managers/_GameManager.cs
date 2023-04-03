@@ -117,6 +117,8 @@ public class _GameManager : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         Debug.Log("Scene Loaded: " + scene.name);
+        HudManager.instance.hideKeyHUD();
+        HudManager.instance.hideDynamiteHUD();
         if (deathMenu.activeSelf) {
             deathMenu.SetActive(false);
         }
@@ -152,19 +154,26 @@ public class _GameManager : MonoBehaviour {
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
             m_levelIndicator.sprite = m_levelIdicatorSprite[3];
             AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
+        }else if(scene.name == "Secret") {
+            StartCoroutine(CutsceneBG.instance.FadeOutImage());
+            m_levelIndicator.sprite = m_levelIdicatorSprite[4];
+            AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else if (scene.name != "Main Menu") {
             Debug.Log("BG Fade");
             StartCoroutine(CutsceneBG.instance.FadeOutImage());
-            cutscenePlayed = false;
+            
             AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[0]);
         }
         else {
             if(Player.instance != null) Destroy(Player.instance.gameObject);
+            if(victoryMenu.activeInHierarchy) victoryMenu.SetActive(false);
+            
             if(CutsceneBG.instance.bg.alpha > 0) {
                 StartCoroutine(CutsceneBG.instance.FadeOutImage());
             }
             AudioManager.instance.PlayBGM(AudioManager.instance.bgmList[1]);
+            cutscenePlayed = false;
         }
     }
 

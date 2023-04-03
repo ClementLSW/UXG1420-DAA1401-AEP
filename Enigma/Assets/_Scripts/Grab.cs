@@ -48,6 +48,11 @@ public class Grab : MonoBehaviour
                 }
                 
                 heldItem.transform.SetParent(grabPos);
+                if(heldItem.GetComponent<Torch>() != null) {
+                    if(heldItem.GetComponentInChildren<BoxCollider2D>() != null) {
+                        Destroy(heldItem.GetComponentInChildren<BoxCollider2D>());
+                    }
+                }
                 isHoldingItem = true;
                 
              }

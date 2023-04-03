@@ -50,17 +50,20 @@ TagManager:
   - name: BG
     uniqueID: 1257293187
     locked: 0
-  - name: Objects
-    uniqueID: 3618676633
-    locked: 0
   - name: Door
     uniqueID: 1974264453
+    locked: 0
+  - name: Objects
+    uniqueID: 3618676633
     locked: 0
   - name: Player
     uniqueID: 3857857389
     locked: 0
   - name: Platforms
     uniqueID: 3118055985
+    locked: 0
+  - name: Torches
+    uniqueID: 4193001969
     locked: 0
   - name: DoorFront
     uniqueID: 1020611533

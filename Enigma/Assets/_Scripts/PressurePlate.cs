@@ -85,6 +85,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
                         gameObject.layer = 0;
                         gameObject.transform.SetParent(this.transform);
                         item = gameObject;
+                        Debug.Log("Yellow Rumble");
                         audioManager.PlaySfx(clip);
                         return;
                     }
@@ -99,6 +100,7 @@ public class PressurePlate : MonoBehaviour, IAnchor
                     gameObject.layer = 0;
                     gameObject.transform.SetParent(this.transform);
                     item = gameObject;
+                    audioManager.PlaySfx(clip);
                     return;
                 }
                 break;
